@@ -1,97 +1,95 @@
-class Stopwatch {
-    constructor(display, results) {
-        this.running = false;
-        this.display = display;
-        this.results = results;
-        this.laps = [];
-        this.reset();
-        this.print(this.times);
-    }
+function Timer(duration, element) {
+    var self = this;
+    this.duration = duration;
+    this.element = element;
+    this.running = false;
 
-    reset() {
-        this.times = [0, 0, 0];
-    }
+    this.els = {
+        ticker: document.getElementById("ticker"),
+        seconds: document.getElementById("seconds"),
+    };
 
-    start() {
-        if (!this.time) this.time = performance.now();
-        if (!this.running) {
-            this.running = true;
-            requestAnimationFrame(this.step.bind(this));
+    document.getElementById("toggle").addEventListener("click", function () {
+        var cl = "countdown--wide";
+        if (self.element.classList.contains(cl)) {
+            self.element.classList.remove(cl);
+        } else {
+            self.element.classList.add(cl);
         }
-    }
+    });
 
-    lap() {
-        let times = this.times;
-        let li = document.createElement("li");
-        li.innerText = this.format(times);
-        this.results.appendChild(li);
-    }
-
-    stop() {
-        this.running = false;
-        this.time = null;
-    }
-
-    restart() {
-        if (!this.time) this.time = performance.now();
-        if (!this.running) {
-            this.running = true;
-            requestAnimationFrame(this.step.bind(this));
+    var hammerHandler = new Hammer(this.element);
+    hammerHandler.get("pan").set({ direction: Hammer.DIRECTION_VERTICAL });
+    hammerHandler.on("panup pandown", function (ev) {
+        if (!self.running) {
+            if (
+                ev.direction === Hammer.DIRECTION_UP &&
+                self.duration < 999000
+            ) {
+                self.setDuration(self.duration + 1000);
+            } else if (
+                ev.direction === Hammer.DIRECTION_DOWN &&
+                self.duration > 0
+            ) {
+                self.setDuration(self.duration - 1000);
+            }
         }
-        this.reset();
-    }
+    });
 
-    clear() {
-        clearChildren(this.results);
-    }
-
-    step(timestamp) {
-        if (!this.running) return;
-        this.calculate(timestamp);
-        this.time = timestamp;
-        this.print();
-        requestAnimationFrame(this.step.bind(this));
-    }
-
-    calculate(timestamp) {
-        var diff = timestamp - this.time;
-        // Hundredths of a second are 100 ms
-        this.times[2] += diff / 10;
-        // Seconds are 100 hundredths of a second
-        if (this.times[2] >= 100) {
-            this.times[1] += 1;
-            this.times[2] -= 100;
+    hammerHandler.on("tap", function () {
+        if (self.running) {
+            self.reset();
+        } else {
+            self.start();
         }
-        // Minutes are 60 seconds
-        if (this.times[1] >= 60) {
-            this.times[0] += 1;
-            this.times[1] -= 60;
-        }
-    }
-
-    print() {
-        this.display.innerText = this.format(this.times);
-    }
-
-    format(times) {
-        return `\
-        ${pad0(times[0], 2)}:\
-        ${pad0(times[1], 2)}:\
-        ${pad0(Math.floor(times[2]), 2)}`;
-    }
+    });
 }
 
-function pad0(value, count) {
-    var result = value.toString();
-    for (; result.length < count; --count) result = "0" + result;
-    return result;
-}
+Timer.prototype.start = function () {
+    var self = this;
+    var start = null;
+    this.running = true;
+    var remainingSeconds = (this.els.seconds.textContent =
+        this.duration / 1000);
 
-function clearChildren(node) {
-    while (node.lastChild) node.removeChild(node.lastChild);
-}
+    function draw(now) {
+        if (!start) start = now;
+        var diff = now - start;
+        var newSeconds = Math.ceil((self.duration - diff) / 1000);
 
-let stopwatch = new Stopwatch(
-    document.querySelector(".stopwatch"),
-    document.querySelector(".results")
-);
+        if (diff <= self.duration) {
+            self.els.ticker.style.height =
+                100 - (diff / self.duration) * 100 + "%";
+
+            if (newSeconds != remainingSeconds) {
+                self.els.seconds.textContent = newSeconds;
+                remainingSeconds = newSeconds;
+            }
+
+            self.frameReq = window.requestAnimationFrame(draw);
+        } else {
+            //self.running = false;
+            self.els.seconds.textContent = 0;
+            self.els.ticker.style.height = "0%";
+            self.element.classList.add("countdown--ended");
+        }
+    }
+
+    self.frameReq = window.requestAnimationFrame(draw);
+};
+
+Timer.prototype.reset = function () {
+    this.running = false;
+    window.cancelAnimationFrame(this.frameReq);
+    this.els.seconds.textContent = this.duration / 1000;
+    this.els.ticker.style.height = null;
+    this.element.classList.remove("countdown--ended");
+};
+
+Timer.prototype.setDuration = function (duration) {
+    this.duration = duration;
+    this.els.seconds.textContent = this.duration / 1000;
+};
+
+var timer = new Timer(10000, document.getElementById("countdown"));
+timer.start();

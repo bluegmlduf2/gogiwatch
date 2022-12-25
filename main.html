@@ -9,16 +9,14 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-        <div class="stopwatch"></div>
-		<ul class="results"></ul>
-        <nav class="controls">
-            <a href="#" class="button" onClick="stopwatch.start();">Start</a>
-			<a href="#" class="button" onClick="stopwatch.lap();">Lap</a>
-			<a href="#" class="button" onClick="stopwatch.stop();">Stop</a>
-			<a href="#" class="button" onClick="stopwatch.restart();">Restart</a>
-			<a href="#" class="button" onClick="stopwatch.clear();">Clear Laps</a>
-		</nav>
+        <div class="container">
+            <div class="countdown countdown--wide" id="countdown">
+              <div class="countdown__fill" id="ticker"></div>
+              <div class="countdown__digit" id="seconds">00</div>
+            </div>
+          </div><a class="full-button" id="toggle">Toggle size</a>
         <!-- JS -->
+        <script src="assset/js/hammer.js"></script>
         <script src="main.js"></script>
     </body>
 </html>

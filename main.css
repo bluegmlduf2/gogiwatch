@@ -1,54 +1,88 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
-  
-  html {
-    background: #333;
-    color: #bbb;
-    font-family: Menlo;
-  }
-  
-  .controls {
-    position: fixed;
-    text-align: center;
-    top: 1em;
-    width: 100%;
-  }
-  
-  .button {
-    color: #bbb;
-    font-size: 4vw;
-    margin: 0 0.5em;
-    text-decoration: none;
-  }
-  
-  .button:first-child {
-      margin-left: 0;
-  }
-  
-  .button:last-child {
-      margin-right: 0;
-  }
-  
-  .button:hover {
-    color: white;
-  }
-  
-  .stopwatch {
-    font-size: 10vw;
-    height: 100%;
-    line-height: 100vh;
-    text-align: center;
-  }
-  
-  .results {
-    border-color: lime;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+html, body {
+	 height: 100%;
+}
+ body {
+	 background: black;
+}
+ * {
+	 touch-action: none;
+}
+ .container {
+	 height: 100%;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 overflow: hidden;
+}
+ .countdown {
+	 display: block;
+	 width: 66vmin;
+	 height: 66vmin;
+	 position: relative;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 font-family: 'Oswald', sans-serif;
+	 font-weight: 400;
+	 font-size: 25vmin;
+	 border-radius: 50%;
+	 overflow: hidden;
+	 cursor: pointer;
+	 transition: width, height, border-radius, font-size;
+	 transition-duration: 0.2s;
+}
+ .countdown--ended {
+	 animation: buzz 0.5s;
+}
+ .countdown:active {
+	 transform: scale(1.02);
+}
+ @keyframes buzz {
+	 0% {
+		 transform: rotate(0);
+	}
+	 10%, 30%, 50%, 70%, 90% {
+		 transform: rotate(6deg);
+	}
+	 20%, 40%, 60%, 80% {
+		 transform: rotate(-6deg);
+	}
+	 100% {
+		 transform: rotate(0);
+	}
+}
+ .countdown--wide {
+	 width: 100%;
+	 height: 100%;
+	 font-size: 50vmin;
+	 border-radius: 0;
+}
+ .countdown__fill {
+	 display: block;
+	 width: 100%;
+	 height: 100%;
+	 position: absolute;
+	 left: 0;
+	 bottom: 0;
+	 background: #ff5722;
+	 opacity: 1;
+}
+ .countdown__digit {
+	 width: 100%;
+	 color: #ff5722;
+	 text-align: center;
+	 mix-blend-mode: difference;
+	 pointer-events: none;
+	 user-select: none;
+}
+ .full-button {
+	 position: absolute;
+	 right: 10px;
+	 bottom: 10px;
+	 padding: 1em 0.5em 0.5em 2em;
+	 font-family: 'Oswald', sans-serif;
+	 text-transform: uppercase;
+	 color: white;
+	 cursor: pointer;
+}
+ 
