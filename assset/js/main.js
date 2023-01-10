@@ -3,12 +3,18 @@ function Timer(duration, element) {
     this.duration = duration; // 타이머의 시간
     this.element = element; // 타이머 메인 객체
     this.running = false; // 타이머 동작 여부
+    this.startTime = null;
+    this.diff = null;
+    this.isPaused = false;
 
     // 타이머 제어를 위한 객체
     this.els = {
         ticker: document.getElementById("ticker"), // 타이머에 따라 증가하는 배경화면 수치
         seconds: document.getElementById("seconds"), // 화면에 표시되는 초
     };
+
+    // 타이머 남은 시간 (초기설정시에는 설정시간)
+    this.remainingSeconds = self.els.seconds.textContent = self.duration / 1000;
 
     // 화면 모양 변경
     document.getElementById("toggle").addEventListener("click", function () {
@@ -57,26 +63,28 @@ function Timer(duration, element) {
 // 시작
 Timer.prototype.start = function () {
     var self = this;
-    var start = null;
     this.running = true;
-    // 타이머 남은 시간 (초기설정시에는 설정시간)
-    var remainingSeconds = (this.els.seconds.textContent =
-        this.duration / 1000);
-    
-    // 타이머의 시간이 줄어드는 애니메이션을 그리는 메서드 
+
+    // 타이머의 시간이 줄어드는 애니메이션을 그리는 메서드
     // requestAnimationFrame의 콜백메서드는 현재의 timestamp를 기본 매개변수로 전달한다
     function draw(now) {
-        if (!start) start = now; // 시작시간을 현재시간으로 설정
-        var diff = now - start; // 현재시간 - 시작시간 = 경과시간(증가함)
-        var newSeconds = Math.ceil((self.duration - diff) / 1000);
+        // FIXME 미묘하게 시간이 안맞음
+        // 타이머 정지후 재시작시
+        if (self.isPaused) {
+            self.isPaused = false;
+            self.startTime = now - self.startTime;
+        }
+        if (!self.startTime) self.startTime = now; // 시작시간을 현재시간으로 설정
+        self.diff = now - self.startTime; // 현재시간 - 시작시간 = 경과시간(증가함)
+        var newSeconds = Math.ceil((self.duration - self.diff) / 1000);
 
-        // 경과시간이 타이머 설정시간보다 작은 경우 계속해서 재귀호출 
-        if (diff <= self.duration) {
+        // 경과시간이 타이머 설정시간보다 작은 경우 계속해서 재귀호출
+        if (self.diff <= self.duration) {
             self.els.ticker.style.height =
-                100 - (diff / self.duration) * 100 + "%";
+                100 - (self.diff / self.duration) * 100 + "%";
 
             // 타이머 남은시간에 갱신
-            if (newSeconds != remainingSeconds) {
+            if (newSeconds != self.remainingSeconds) {
                 self.els.seconds.textContent = newSeconds;
                 remainingSeconds = newSeconds;
             }
@@ -84,14 +92,13 @@ Timer.prototype.start = function () {
             // draw 콜백메서드를 1초에 60번 재귀호출한다 (setInterval보다 훨씬 부드러운 동작제공)
             self.frameReq = window.requestAnimationFrame(draw);
         } else {
-        // 재귀호출을 중지
-            //self.running = false;
+            // 재귀호출을 중지
+            self.isPaused = false;
             self.els.seconds.textContent = 0;
             self.els.ticker.style.height = "0%";
             self.element.classList.add("countdown--ended");
         }
     }
-
     // 애니메이션 메서드 최초 호출
     self.frameReq = window.requestAnimationFrame(draw);
 };
@@ -99,12 +106,15 @@ Timer.prototype.start = function () {
 // 정지
 Timer.prototype.stop = function () {
     this.running = false;
+    this.isPaused = true;
     window.cancelAnimationFrame(this.frameReq);
 };
 
+// FIXME 수정필요
 // 재시작
 Timer.prototype.reset = function () {
     this.running = false;
+    this.isPaused = false;
     window.cancelAnimationFrame(this.frameReq);
     this.els.seconds.textContent = this.duration / 1000;
     this.els.ticker.style.height = null;
