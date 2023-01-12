@@ -10,11 +10,65 @@
         <link rel="stylesheet" type="text/css" href="../assset/css/main.css" />
     </head>
     <body>
-        <p id="time_left"></p>
-        <ul>
-          <li id="playpause">▶</li>
-          <li id="reset">↺</li>
-        </ul>
+        <main class="wrap">
+            <!-- 메인 영역 : s -->
+            <section class="main">
+                <h2 class="hide-txt">메인</h2>
+                <!-- Logo -->
+                <form action="">
+                    <h2>돼지고기</h2>
+                    <div class="wrap-beef">
+                        <label>
+                            <input type="radio" name="pork">
+                            <span>pork1</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="pork">
+                            <span>pork2</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="pork">
+                            <span>pork3</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="pork">
+                            <span>pork4</span>
+                        </label>
+                    </div>
+                    <h2>소고기</h2>
+                    <div class="wrap-beef">
+                        <label>
+                            <input type="radio" name="beef">
+                            <span>beef1</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="beef">
+                            <span>beef2</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="beef">
+                            <span>beef3</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="beef">
+                            <span>beef4</span>
+                        </label>
+                    </div>
+                    <button type="submit">시작</button>
+                </form>
+            </section>
+            <!-- 메인 영역 : e -->
+            <!-- 타이머 영역 : s -->
+            <section class="timer">
+                <h2 class="hide-txt">타이머</h2>
+                <p id="time_left"></p>
+                <ul>
+                    <li id="playpause">▶</li>
+                    <li id="reset">↺</li>
+                </ul>
+            </section>
+            <!-- 타이머 영역 : e -->
+        </main>
         <!-- JS -->
         <script src="../assset/js/main.js"></script>
     </body>
