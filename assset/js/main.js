@@ -1,5 +1,5 @@
-const COUNT_START = 45 * 60 * 10; // min * sec * 단위
-let count = COUNT_START;
+let countConst = 0;
+let count = 0;
 let playing = false;
 
 playpause = document.getElementById("playpause");
@@ -23,7 +23,7 @@ reset.onclick = function () {
         playing = false;
         playpause.innerHTML = "▶";
     }
-    count = COUNT_START;
+    initTime();
     displayTime();
 };
 
@@ -36,6 +36,15 @@ function countdown() {
         count--;
     }
     displayTime();
+}
+
+// 타이머 시간초기화
+function initTime() {
+    let initTime = "0311";
+    const MM=initTime.substring(0,2);
+    const SS=initTime.substring(2);
+    countConst = (MM * 60 + +SS) * 10; // MMSS를 SEC로 변환
+    count = countConst;
 }
 
 // 타이머 표시
@@ -53,5 +62,7 @@ function LeadingZero(Time) {
     return Time < 10 ? "0" + Time : Time;
 }
 
+// 최초 시간 초기화
+initTime();
 // 최초 타이머 표시
 displayTime();
