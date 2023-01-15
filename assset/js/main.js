@@ -2,7 +2,7 @@ import Timer from "./timer.js";
 import roastingTime from "./roastingTime.js";
 
 const timer = new Timer();
-timer.initTime("0000");
+timer.setTime();
 timer.displayTime();
 
 /********************************************************************************
@@ -16,7 +16,6 @@ document.getElementById("playpause").addEventListener("click", () => {
 
 // 리셋버튼
 document.getElementById("reset").addEventListener("click", () => {
-    timer.initTime("0311");
     timer.reset();
     timer.displayTime();
 });
@@ -26,7 +25,7 @@ document.querySelectorAll(".wrap-pork input").forEach((e) => {
     e.addEventListener("change", () => {
         const porkRoastingTime = getPorkRoastingTime();
         // 고기 굽기 시간 설정
-        timer.initTime(porkRoastingTime[0]);
+        timer.setTime(porkRoastingTime[0]);
         timer.displayTime();
     });
 });
@@ -38,7 +37,7 @@ document
         e.addEventListener("change", () => {
             const beefRoastingTime = getBeefRoastingTime();
             // 고기 굽기 시간 설정
-            timer.initTime(beefRoastingTime[0]);
+            timer.setTime(beefRoastingTime[0]);
             timer.displayTime();
         });
     });

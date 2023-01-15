@@ -1,9 +1,9 @@
 class Timer {
     playpause = document.getElementById("playpause");
     display = document.getElementById("time_left");
-    playing = false;
-    countConst = 0;
-    count = 0;
+    playing = false; // 재생상태 유무
+    resetTime = null; // 리셋시간 저장용
+    count = 0; // 현재시간을 초로 환산한 값
 
     constructor() {
         self = this;
@@ -23,10 +23,12 @@ class Timer {
 
     // 리셋
     reset() {
+        // 재생중일시 정지
         if (self.playing) {
             self.playing = false;
             self.playpause.innerHTML = "▶";
         }
+        self.setTime(self.resetTime);
     }
 
     // 타이머 동작
@@ -40,12 +42,12 @@ class Timer {
         self.displayTime();
     }
 
-    // 타이머 시간초기화
-    initTime(time) {
+    // 타이머 시간초기화 (미입력시 00:00)
+    setTime(time = "0000") {
+        self.resetTime = time;
         const MM = time.substring(0, 2);
         const SS = time.substring(2);
-        self.countConst = (MM * 60 + +SS) * 10; // MMSS를 SEC로 변환
-        self.count = self.countConst;
+        self.count = (MM * 60 + +SS) * 10; // MMSS를 SEC로 변환;
     }
 
     // 타이머 표시
