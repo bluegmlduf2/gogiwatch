@@ -26,3 +26,8 @@ p {
 	text-align: center;
 	cursor: pointer;
   } 
+
+  /* 소고기 굽기정도 비표시 */
+  .wrap-beef-roasting-type{
+	display: none;
+  }
