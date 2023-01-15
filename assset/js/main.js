@@ -1,5 +1,5 @@
 import Timer from "./timer.js";
-import timeJson from "./time.json" assert { type: "json" };
+import roastingTime from "./roastingTime.js";
 
 const timer = new Timer();
 timer.initTime("0000");
@@ -62,7 +62,7 @@ let getPorkRoastingTime = function () {
         'input[name="type1"]:checked'
     ).value;
     // 돼지고기 굽기시간
-    return timeJson.pork[selectedPorkValue].time;
+    return roastingTime.pork[selectedPorkValue].time;
 };
 
 // 소고기 굽는 시간을 JSON으로부터 취득
@@ -76,5 +76,5 @@ let getBeefRoastingTime = function () {
         'input[name="type2"]:checked'
     ).value;
     // 소고기 굽기시간
-    return timeJson.beef[selectedBeefValue][selectedBeefRoasting].time;
+    return roastingTime.beef[selectedBeefValue][selectedBeefRoasting].time;
 };
