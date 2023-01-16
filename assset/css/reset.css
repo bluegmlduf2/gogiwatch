@@ -1,11 +1,29 @@
-/* reset */ 
+/* reset */
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=M+PLUS+Rounded+1c:wght@400;500;700&family=Montserrat:wght@600&family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@300;400;500;700&family=Yusei+Magic&display=swap');
+/* 
+ENG tit
+font-family: 'Montserrat', sans-serif;
+ENG txt
+font-family: 'Roboto', sans-serif;
+
+KOR tit
+font-family: 'Jua', sans-serif;
+KOR txt
+font-family: 'Nanum Gothic', sans-serif;
+
+JAP tit
+font-family: 'Yusei Magic', sans-serif;
+JAP txt
+font-family: 'M PLUS Rounded 1c', sans-serif;
+
+*/
 *,*::after,*::before{-webkit-box-sizing:border-box;box-sizing:border-box; letter-spacing: inherit; font-size:inherit; line-height:inherit; color:inherit} 
 html{-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;font-size:10px;font-weight:400; line-height:1; letter-spacing: -.08em} 
 @media (max-width: 359px) { html {font-size: -webkit-calc(7px + 10 * ((100vw - 280px) / 359));font-size: calc(7px + 10 * ((100vw - 280px) / 359))}} 
 @media (min-width: 360px) { html {font-size: -webkit-calc(10px + 10 * ((100vw - 360px) / 1440)); font-size: calc(10px + 10 * ((100vw - 360px) / 1440))}}
-html:lang(ko){font-family:"Malgun Gothic","맑은 고딕",Dotum,"돋움",arial,verdana,sans-serif}
-html:lang(ja){font-family:"Malgun Gothic","맑은 고딕",Dotum,"돋움",arial,verdana,sans-serif}
-html:lang(em){font-family:"Malgun Gothic","맑은 고딕",Dotum,"돋움",arial,verdana,sans-serif}
+html:lang(ko){font-family:"Nanum Gothic", "Jua", "Malgun Gothic","맑은 고딕",Dotum,"돋움",arial,verdana,sans-serif}
+html:lang(ja){font-family:"Yusei Magic", "M PLUS Rounded 1c", "Malgun Gothic","맑은 고딕",Dotum,"돋움",arial,verdana,sans-serif}
+html:lang(en){font-family:"Montserrat", "Roboto", "Malgun Gothic","맑은 고딕",Dotum,"돋움",arial,verdana,sans-serif}
 article,aside,audio,blockquote,body,canvas,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,input,legend,li,mark,nav,ol,p,pre,section,td,textarea,th,time,ul,video{margin:0;padding:0} 
 body{color:#333;background-color:#fff;min-width:280px} 
 img{border:0;border-style:none} 
