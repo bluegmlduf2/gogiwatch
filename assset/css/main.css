@@ -1,7 +1,37 @@
+main.wrap{
+	overflow:hidden;
+	position:relative;
+	width:100%;
+	height:100vh;
+}
 section {
 	text-align:center;
 }
+/* 메인 영역 */
+.main-area {
+	width:100%;
+	height:100%;
+}
 /* 타이머 */
+.timer-area {
+	display:flex;
+	align-items:center;
+	flex-direction:column;
+	justify-content:center;
+	position:absolute;
+	bottom:-100vh;
+	width:100%;
+	height:100%;
+	opacity:0;
+	transition:all 0.5s;
+}
+.timer-area.on {
+	bottom:0;
+	opacity:1;
+	transition:all 0.5s;
+	background:#fff;
+	
+}
 p {
 	margin: 20px;
 	margin: 2rem;

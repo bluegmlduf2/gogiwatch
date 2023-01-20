@@ -8,6 +8,12 @@ timer.displayTime();
 /********************************************************************************
  * 이벤트 등록
  ********************************************************************************/
+// 시작 버튼 클릭 시 타이머 등장
+let btnStart = document.querySelector(".btn-start");
+let timerArea = document.querySelector(".timer-area");
+btnStart.addEventListener("click", () => {
+    timerArea.classList.add("on");
+});
 // 재생,정지버튼 클릭이벤트
 document.getElementById("playpause").addEventListener("click", () => {
     timer.play();
