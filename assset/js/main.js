@@ -18,6 +18,8 @@ btnStart.addEventListener("click", () => {
 // 임시 닫기 버튼
 btnClose.addEventListener("click", () => {
     timerArea.classList.remove("on");
+    timer.reset();
+    timer.displayTime();
 });
 // 재생,정지버튼 클릭이벤트
 document.getElementById("playpause").addEventListener("click", () => {

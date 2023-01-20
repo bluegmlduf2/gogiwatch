@@ -3,14 +3,24 @@ main.wrap{
 	position:relative;
 	width:100%;
 	height:100vh;
+	background:#d68b4e;
 }
 section {
 	text-align:center;
 }
 /* 메인 영역 */
 .main-area {
+	position:relative;
+	padding: 42px 0 83px;
+	padding: 4.2rem 0 8.3rem;
 	width:100%;
 	height:100%;
+	font-size:18px;
+	font-size:1.8rem
+}
+.main-area h2{
+	margin-top:36px;
+	margin-top:3rem;
 }
 .btn-start {
 	display:block;
@@ -19,14 +29,18 @@ section {
 	left:0;
 	z-index:1;
 	width:100%;
-	padding:36px 0;
-	padding:3.6rem 0;
+	padding:24px 0;
+	padding:2.4rem 0;
 	color:#fff;
 	font-weight:600;
 	font-size: 20px;
 	font-size: 2rem;
 	line-height:1;
-	background-color:#3b39e0;
+	background-color:#b05435;
+}
+html:lang(ko) .btn-start {
+	letter-spacing:10px;
+	letter-spacing:1rem;
 }
 /* 타이머 */
 .timer-area {
@@ -46,7 +60,7 @@ section {
 	bottom:0;
 	opacity:1;
 	transition:all 0.5s;
-	background:#fff;
+	background:#d68b4e;
 }
 p {
 	margin: 20px;
@@ -100,7 +114,7 @@ li {
 	width:100%;
 	height:2px;
 	height:0.2rem;
-	background-color:#000;
+	background-color:#fff;
 }
 .btn-close:before {
 	transform:rotate(45deg);	
