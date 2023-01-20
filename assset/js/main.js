@@ -10,9 +10,14 @@ timer.displayTime();
  ********************************************************************************/
 // 시작 버튼 클릭 시 타이머 등장
 let btnStart = document.querySelector(".btn-start");
+let btnClose = document.querySelector(".btn-close");
 let timerArea = document.querySelector(".timer-area");
 btnStart.addEventListener("click", () => {
     timerArea.classList.add("on");
+});
+// 임시 닫기 버튼
+btnClose.addEventListener("click", () => {
+    timerArea.classList.remove("on");
 });
 // 재생,정지버튼 클릭이벤트
 document.getElementById("playpause").addEventListener("click", () => {
