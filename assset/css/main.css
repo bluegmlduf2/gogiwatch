@@ -11,8 +11,8 @@ section {
 /* 메인 영역 */
 .main-area {
 	position:relative;
-	padding: 42px 0 83px;
-	padding: 4.2rem 0 8.3rem;
+	padding: 42px 0 68px;
+	padding: 4.2rem 0 6.8rem;
 	width:100%;
 	height:100%;
 	font-size:18px;
