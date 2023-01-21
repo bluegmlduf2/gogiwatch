@@ -60,7 +60,7 @@ document.getElementsByName("type1").forEach((e) => {
     e.addEventListener("change", (event) => {
         // 소고기를 선택했을시만 고기 익힘 정도를 표시/비표시
         document.querySelector(".wrap-beef-roasting-type").style.display =
-            event.target.closest(".wrap-beef") ? "block" : "none";
+            event.target.closest(".wrap-beef") ? "none" : "block";
     });
 });
 
