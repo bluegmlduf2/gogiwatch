@@ -34,7 +34,7 @@ document.getElementById("reset").addEventListener("click", () => {
 });
 
 // 돼지고기 고기종류 선택
-document.querySelectorAll(".wrap-pork input").forEach((e) => {
+document.querySelectorAll(".wrap-meat-pork input").forEach((e) => {
     e.addEventListener("change", () => {
         const porkRoastingTime = getPorkRoastingTime();
         // 고기 굽기 시간 설정
@@ -45,7 +45,7 @@ document.querySelectorAll(".wrap-pork input").forEach((e) => {
 
 // 소고기 고기종류나 굽기정도 선택시
 document
-    .querySelectorAll(".wrap-beef input,.wrap-beef-roasting-type input")
+    .querySelectorAll(".wrap-meat-beef input,.wrap-meat-beef-roasting-type input")
     .forEach((e) => {
         e.addEventListener("change", () => {
             const beefRoastingTime = getBeefRoastingTime();
@@ -60,7 +60,7 @@ document.getElementsByName("type1").forEach((e) => {
     e.addEventListener("change", (event) => {
         // 소고기를 선택했을시만 고기 익힘 정도를 표시/비표시
         document.querySelector(".wrap-beef-roasting-type").style.display =
-            event.target.closest(".wrap-beef") ? "none" : "block";
+            event.target.closest(".wrap-meat-beef") ? "block" : "none";
     });
 });
 

@@ -20,7 +20,11 @@ section {
 }
 .main-area h2{
 	margin-top:36px;
-	margin-top:3rem;
+	margin-top:3.6rem;
+}
+.main-area [class^="wrap-meat"] {
+	margin-top: 12px;
+	margin-top: 1.2rem;
 }
 .btn-start {
 	display:block;
@@ -62,7 +66,7 @@ html:lang(ko) .btn-start {
 	transition:all 0.5s;
 	background:#d68b4e;
 }
-p {
+.timer-area > p {
 	margin: 20px;
 	margin: 2rem;
 	font-size: 36px;
@@ -70,13 +74,13 @@ p {
 	font-family: courier;
 }
   
-ul {
+.timer-area > ul {
 	margin: 20px;
 	font-size: 3em;
 	font-family: courier;
 }
   
-li {
+.timer-area > ul > li {
 	display: inline-block;
 	margin: 0 5px 0;
 	color: white;
@@ -92,6 +96,8 @@ li {
 /* 소고기 굽기정도 비표시 */
 .wrap-beef-roasting-type{
 	display: none;
+	margin-top: 16px;
+	margin-top: 1.6rem;
 }
 /* 임시 닫기 버튼 */
 .btn-close {
