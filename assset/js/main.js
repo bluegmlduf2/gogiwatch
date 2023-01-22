@@ -38,19 +38,21 @@ document.querySelectorAll(".wrap-meat-pork input").forEach((e) => {
     e.addEventListener("change", () => {
         const porkRoastingTime = getPorkRoastingTime();
         // 고기 굽기 시간 설정
-        timer.setTime(porkRoastingTime[0]);
+        timer.setTime(porkRoastingTime.roastringPorkTimeSum);
         timer.displayTime();
     });
 });
 
 // 소고기 고기종류나 굽기정도 선택시
 document
-    .querySelectorAll(".wrap-meat-beef input,.wrap-meat-beef-roasting-type input")
+    .querySelectorAll(
+        ".wrap-meat-beef input,.wrap-meat-beef-roasting-type input"
+    )
     .forEach((e) => {
         e.addEventListener("change", () => {
             const beefRoastingTime = getBeefRoastingTime();
             // 고기 굽기 시간 설정
-            timer.setTime(beefRoastingTime[0]);
+            timer.setTime(beefRoastingTime.rosatingBeefTimeSum);
             timer.displayTime();
         });
     });
@@ -73,8 +75,15 @@ let getPorkRoastingTime = function () {
     const selectedPorkValue = document.querySelector(
         'input[name="type1"]:checked'
     ).value;
-    // 돼지고기 굽기시간
-    return roastingTime.pork[selectedPorkValue].time;
+    // 돼지고기 굽기시간 배열
+    const roastingPorkTime = roastingTime.pork[selectedPorkValue].time;
+    // 돼지고기 총 굽기시간
+    const rosatingPorkTimeSum = getSumRoastingTime(roastingPorkTime);
+
+    return {
+        roastringPorkTimeArr: roastingPorkTime,
+        roastringPorkTimeSum: rosatingPorkTimeSum,
+    };
 };
 
 // 소고기 굽는 시간을 JSON으로부터 취득
@@ -87,6 +96,30 @@ let getBeefRoastingTime = function () {
     const selectedBeefRoasting = document.querySelector(
         'input[name="type2"]:checked'
     ).value;
-    // 소고기 굽기시간
-    return roastingTime.beef[selectedBeefValue][selectedBeefRoasting].time;
+
+    // 소고기 굽기시간 배열
+    const roastingBeefTime =
+        roastingTime.beef[selectedBeefValue][selectedBeefRoasting].time;
+    // 소고기 총 굽기시간
+    const rosatingBeefTimeSum = getSumRoastingTime(roastingBeefTime);
+
+    return {
+        rosatingBeefTimeArr: roastingBeefTime,
+        rosatingBeefTimeSum: rosatingBeefTimeSum,
+    };
+};
+
+// 굽기시간의 배열의 총합을 취득
+let getSumRoastingTime = function (roastingArr) {
+    // 배열을 분에서 초로 변환하여 총합을 구함
+    const rosatingTimeSum = roastingArr.reduce((acc, curVal, i) => {
+        const MM = Number(curVal.substring(0, 2));
+        const SS = Number(curVal.substring(2));
+        return acc + (MM * 60 + +SS);
+    }, 0);
+    // 초로부터 분과 초를 다시 구한뒤 반환
+    const min = parseInt(rosatingTimeSum / 60);
+    const sec = rosatingTimeSum % 60;
+    const mmss = String(min).padStart(2, "0") + String(sec).padStart(2, "0");
+    return mmss;
 };
