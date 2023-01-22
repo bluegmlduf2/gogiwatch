@@ -54,7 +54,6 @@ class Timer {
 
     // 타이머 고기 뒤집기 시간 설정
     setTimeTurnOut(turnOutTimeArr) {
-        // TODO 전달받은 배열에서 고기뒤집시긴의 중첩값을 구해야함..수정필요
         self.turnOutTimeArr = turnOutTimeArr;
     }
 
@@ -66,7 +65,10 @@ class Timer {
         );
         // 고기뒤집을 시간이라면 표시
         // TODO console.warn 삭제예정
-        if (isOkTurnOutTime) console.warn("뒤집어요");
+        if (isOkTurnOutTime) {
+            console.warn("뒤집어요");
+            console.warn(self.getCurrentTime(true));
+        };
     }
 
     // 타이머 표시
