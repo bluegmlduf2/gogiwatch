@@ -39,6 +39,7 @@ document.querySelectorAll(".wrap-meat-pork input").forEach((e) => {
         const porkRoastingTime = getPorkRoastingTime();
         // 고기 굽기 시간 설정
         timer.setTime(porkRoastingTime.roastringPorkTimeSum);
+        timer.setTimeTurnOut(porkRoastingTime.roastringPorkTimeArr);
         timer.displayTime();
     });
 });
@@ -53,6 +54,7 @@ document
             const beefRoastingTime = getBeefRoastingTime();
             // 고기 굽기 시간 설정
             timer.setTime(beefRoastingTime.rosatingBeefTimeSum);
+            timer.setTimeTurnOut(beefRoastingTime.rosatingBeefTimeArr);
             timer.displayTime();
         });
     });

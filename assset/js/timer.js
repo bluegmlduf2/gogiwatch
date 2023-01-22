@@ -4,6 +4,7 @@ class Timer {
     playing = false; // 재생상태 유무
     resetTime = null; // 리셋시간 저장용
     count = 0; // 현재시간을 초로 환산한 값
+    turnOutTimeArr = []; // 고기 뒤집기 시간
 
     constructor() {
         self = this;
@@ -37,12 +38,13 @@ class Timer {
             self.playing = false;
         } else if (self.playing) {
             setTimeout(self.countdown, 100);
+            self.alertTurnOutTime();
             self.count--;
         }
         self.displayTime();
     }
 
-    // 타이머 시간초기화 (미입력시 00:00)
+    // 타이머 시간 설정 (미입력시 00:00)
     setTime(time = "0000") {
         self.resetTime = time;
         const MM = time.substring(0, 2);
@@ -50,19 +52,40 @@ class Timer {
         self.count = (MM * 60 + +SS) * 10; // MMSS를 SEC로 변환;
     }
 
-    // 타이머 표시
-    displayTime() {
-        let sec = Math.floor(self.count / 10);
-        let mins = Math.floor(sec / 60);
-        sec -= mins * 60;
-
-        self.display.innerHTML =
-            self.LeadingZero(mins) + ":" + self.LeadingZero(sec);
+    // 타이머 고기 뒤집기 시간 설정
+    setTimeTurnOut(turnOutTimeArr) {
+        // TODO 전달받은 배열에서 고기뒤집시긴의 중첩값을 구해야함..수정필요
+        self.turnOutTimeArr = turnOutTimeArr;
     }
 
-    // LPAD 00
-    LeadingZero(Time) {
-        return Time < 10 ? "0" + Time : Time;
+    // 고기 뒤집기 시간을 알림
+    alertTurnOutTime() {
+        // 고기뒤집기 시간일치 유무
+        const isOkTurnOutTime = !!self.turnOutTimeArr.find(
+            (e) => e === self.getCurrentTime(false)
+        );
+        // 고기뒤집을 시간이라면 표시
+        // TODO console.warn 삭제예정
+        if (isOkTurnOutTime) console.warn("뒤집어요");
+    }
+
+    // 타이머 표시
+    displayTime() {
+        self.display.innerHTML = self.getCurrentTime(true);
+    }
+
+    // 현재시간을 취득
+    // TRUE: MM:SS 형식취득
+    // FALSE: MMSS 형식취득
+    getCurrentTime(isWithColon) {
+        let sec = Math.floor(self.count / 10);
+        let min = Math.floor(sec / 60);
+        sec -= min * 60;
+
+        const minStr = String(min).padStart(2, "0");
+        const secStr = String(sec).padStart(2, "0");
+
+        return isWithColon ? `${minStr}:${secStr}` : minStr + secStr;
     }
 }
 
