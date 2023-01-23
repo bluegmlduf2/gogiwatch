@@ -13,7 +13,13 @@ let btnStart = document.querySelector(".btn-start");
 let btnClose = document.querySelector(".btn-close");
 let timerArea = document.querySelector(".timer-area");
 btnStart.addEventListener("click", () => {
-    timerArea.classList.add("on");
+    let btnValidation = document.querySelector('input[type="radio"]').checked;
+    if (btnValidation == false) {
+        timerArea.classList.remove("on");
+        alert("항목을 선택해 주세요.");
+    }else {
+        timerArea.classList.add("on");
+    }
 });
 // 임시 닫기 버튼
 btnClose.addEventListener("click", () => {
