@@ -12,13 +12,14 @@ timer.displayTime();
 let btnStart = document.querySelector(".btn-start");
 let btnClose = document.querySelector(".btn-close");
 let timerArea = document.querySelector(".timer-area");
+// 시작 버튼 유효성 검사
 btnStart.addEventListener("click", () => {
-    let btnValidation = document.querySelector('input[type="radio"]').checked;
-    if (btnValidation == false) {
+    let btnValidation = document.querySelectorAll('input[name="type1"]:checked').length;
+    if (btnValidation > 0) {
+        timerArea.classList.add("on");
+    }else{
         timerArea.classList.remove("on");
         alert("항목을 선택해 주세요.");
-    }else {
-        timerArea.classList.add("on");
     }
 });
 // 임시 닫기 버튼
