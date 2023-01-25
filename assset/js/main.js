@@ -19,6 +19,7 @@ btnStart.addEventListener("click", () => {
         timerArea.classList.add("on");
     }else{
         timerArea.classList.remove("on");
+        // 레이어 팝업 만든 뒤, innerText 처리
         alert("항목을 선택해 주세요.");
     }
 });
