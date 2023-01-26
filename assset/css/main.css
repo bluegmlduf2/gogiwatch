@@ -128,3 +128,48 @@ html:lang(ko) .btn-start {
 .btn-close:after {
 	transform:rotate(-45deg);
 }
+
+/* 레이어 팝업 */
+#modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#modal .modal-bg {
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+#modal .modal-bg .modal-cont {
+    position: relative;
+    background: #fff;
+    padding: 3rem;
+    max-width: 800px;
+    display: inline-block;
+}
+#modal .modal-bg .modal-cont h2 {
+    font-size: 30px;
+    margin: 0 0 1.5rem;
+}
+#modal .modal-bg .modal-cont p {
+    font-size: 18px;
+}
+#modal .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+}
+#modal .btn-close:before,
+#modal .btn-close:after {
+	position: absolute;
+    top: 1rem;
+	right: 0.5rem;
+	background-color:#000;
+	width:50%;
+}

@@ -8,19 +8,22 @@ timer.displayTime();
 /********************************************************************************
  * 이벤트 등록
  ********************************************************************************/
-// 시작 버튼 클릭 시 타이머 등장
 let btnStart = document.querySelector(".btn-start");
 let btnClose = document.querySelector(".btn-close");
 let timerArea = document.querySelector(".timer-area");
-// 시작 버튼 유효성 검사
+
+// 시작 버튼 클릭 시 타이머 등장
 btnStart.addEventListener("click", () => {
-    let btnValidation = document.querySelectorAll('input[name="type1"]:checked').length;
+    let btnValidation = document.querySelectorAll(
+        'input[name="type1"]:checked'
+    ).length;
+    // 시작 버튼 유효성 검사
     if (btnValidation > 0) {
         timerArea.classList.add("on");
-    }else{
+    } else {
         timerArea.classList.remove("on");
-        // 레이어 팝업 만든 뒤, innerText 처리
-        alert("항목을 선택해 주세요.");
+        // 알림팝업 열기
+        controllayerPopup("항목을 선택해 주세요.");
     }
 });
 // 임시 닫기 버튼
@@ -76,6 +79,10 @@ document.getElementsByName("type1").forEach((e) => {
     });
 });
 
+// 알림창닫기
+document.getElementById("btn-close-modal").addEventListener("click", () => {
+    controllayerPopup();
+});
 /********************************************************************************
  * 메서드
  ********************************************************************************/
@@ -153,4 +160,14 @@ let converTimeSecToMin = function (sumSec) {
     const sec = sumSec % 60;
     const mmss = String(min).padStart(2, "0") + String(sec).padStart(2, "0");
     return mmss;
+};
+
+/**
+ * 알림창을 열기/닫기
+ * 메세지가 존재하면 창을 표시한다
+ * @param {*} message 알림 메세지
+ */
+let controllayerPopup = function (message = null) {
+    document.querySelector("#modal-message").innerText = message ?? "";
+    document.querySelector("#modal").style.display = !!message ? "block" : "none";
 };
