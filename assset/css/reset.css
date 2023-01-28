@@ -59,6 +59,8 @@ textarea{overflow:auto}
 details{display:block} 
 template{display:none} 
 [hidden]{display:none}
+select::-ms-expand {display: none;}
+select{-webkit-appearance:none;-moz-appearance:none;-o-appearance:none;appearance:none}
 
 /*! common */ 
 body.disabled-scroll{overflow:hidden; height:100vh} 
