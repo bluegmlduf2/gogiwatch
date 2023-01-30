@@ -20,8 +20,8 @@ section {
 	font-size:1.8rem
 }
 .main-area h2{
-	margin-top:44px;
-	margin-top:4.4rem;
+	margin-top:36px;
+	margin-top:3.6rem;
 	font-size:24px;
 	font-size: 2.4rem;
 }
@@ -64,8 +64,8 @@ section {
 	border:1px solid #666;
 	border-radius: 8px;
 	border-radius: 0.8rem;
-	height: 60px;
-	height: 6rem;
+	height: 50px;
+	height: 5rem;
 	color:#333;
 	font-weight: 600;
 }
@@ -149,6 +149,16 @@ html:lang(ko) .btn-start {
 	display: none;
 	margin-top: 16px;
 	margin-top: 1.6rem;
+}
+.wrap-meat-roasting span {
+	border-radius:30px;
+	border-radius:3rem;
+}
+.wrap-meat-roasting input[type=radio]:checked + span {
+	color:#698d01;
+	border-width:0.2rem;
+	border-color:#698d01;
+	background:transparent;
 }
 /* 임시 닫기 버튼 */
 .btn-close {
