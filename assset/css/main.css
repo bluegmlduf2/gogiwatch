@@ -200,8 +200,8 @@ html:lang(ko) .btn-start {
 	flex-direction:column;
 	justify-content:center;
 	position:absolute;
-	bottom:-100vh;
-	z-index:20;
+	top:0;
+	z-index:-1;
 	width:100%;
 	height:100%;
 	opacity:0;
@@ -210,11 +210,12 @@ html:lang(ko) .btn-start {
 #modal.on {
 	bottom:0;
 	opacity:1;
+	z-index:20;
 	transition:all 0.5s;
 	background:rgba(0, 0, 0, 0.7);
 }
 #modal.on.stop{
-	background:rgba(209, 50, 50, 0.7);
+	background:rgba(200, 50, 50, 0.5);
 }
 #modal .modal-cont {
     display: block;
