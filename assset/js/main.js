@@ -11,6 +11,7 @@ timer.displayTime();
 let btnStart = document.querySelector(".btn-start");
 let btnClose = document.querySelector(".btn-close");
 let timerArea = document.querySelector(".timer-area");
+let alertModal = document.querySelector("#modal");
 
 // 시작 버튼 클릭 시 타이머 등장
 btnStart.addEventListener("click", () => {
@@ -23,7 +24,7 @@ btnStart.addEventListener("click", () => {
     } else {
         timerArea.classList.remove("on");
         // 알림팝업 열기
-        controllayerPopup("항목을 선택해 주세요.");
+        openLayerPopup("항목을 선택해 주세요");
     }
 });
 // 임시 닫기 버튼
@@ -32,12 +33,22 @@ btnClose.addEventListener("click", () => {
     timer.reset();
     timer.displayTime();
 });
-// 재생,정지버튼 클릭이벤트
+// 재생버튼 클릭이벤트
 document.getElementById("playpause").addEventListener("click", () => {
-    timer.play();
-    timer.displayTime();
+    // 재생상태
+    const isPlaying=timer.playing;
+    
+    // 재생상태에 따른 타이머 재생정지
+    if (isPlaying) {
+        // 재생정지 및 일시정지팝업표시
+        timer.stop();
+        openLayerPopup("일시정지",true);
+    }else{
+        // 재생
+        timer.play();
+        timer.displayTime();
+    }
 });
-
 // 리셋버튼
 document.getElementById("reset").addEventListener("click", () => {
     timer.reset();
@@ -80,9 +91,11 @@ document.getElementsByName("type1").forEach((e) => {
 });
 
 // 알림창닫기
-document.getElementById("btn-close-modal").addEventListener("click", () => {
-    controllayerPopup();
+document.getElementById("modal").addEventListener("click", () => {
+    // 알림팝업 닫기
+    closeLayerPopup();
 });
+
 /********************************************************************************
  * 메서드
  ********************************************************************************/
@@ -163,11 +176,34 @@ let converTimeSecToMin = function (sumSec) {
 };
 
 /**
- * 알림창을 열기/닫기
+ * 알림창을 열기
  * 메세지가 존재하면 창을 표시한다
- * @param {*} message 알림 메세지
+ * @param {String} message 알림 메세지
+ * @param {Boolean} isStopLayer 정지화면 유무
  */
-let controllayerPopup = function (message = null) {
-    document.querySelector("#modal-message").innerText = message ?? "";
-    document.querySelector("#modal").style.display = !!message ? "block" : "none";
+let openLayerPopup = function (message,isStopLayer = false) {
+    // 알림창을 열기
+    alertModal.classList.add("on");
+    alertModal.querySelector("#modal-message").innerText = message;
+
+    // 정지화면인 경우 배경을 빨간색으로 한다
+    if (isStopLayer) {
+        alertModal.classList.add("stop");
+    }
+};
+/**
+ * 알림창을 닫기
+ */
+let closeLayerPopup = function () {
+    // 알림창을 닫기
+    alertModal.classList.remove("on");
+    alertModal.querySelector("#modal-message").innerText = "";
+
+    const isStopLayer=alertModal.classList.contains("stop");
+    // 정지화면인 경우 타이머를 재생
+    if (isStopLayer) {
+        // 재생
+        timer.play();
+        alertModal.classList.remove("stop");
+    }
 };

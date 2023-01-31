@@ -10,16 +10,17 @@ class Timer {
         self = this;
     }
 
-    // 시작,정지
+    // 시작
     play() {
-        if (self.playing) {
-            self.playing = false;
-            self.playpause.innerHTML = "▶";
-        } else if (!self.playing) {
-            self.playing = true;
-            self.playpause.innerHTML = "‖";
-        }
+        self.playing=true;
+        self.playpause.innerHTML = "‖";
         self.countdown();
+    }
+
+    // 정지
+    stop() {
+        self.playing=false;
+        self.playpause.innerHTML = "▶";
     }
 
     // 리셋

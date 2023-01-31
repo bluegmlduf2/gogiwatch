@@ -125,13 +125,13 @@ html:lang(ko) .btn-start {
 	font-family: courier;
 }
   
-.timer-area > ul {
+.timer-area > .time-button-area {
 	margin: 20px;
 	font-size: 3em;
 	font-family: courier;
 }
   
-.timer-area > ul > li {
+.timer-area > .time-button-area > button {
 	display: inline-block;
 	margin: 0 5px 0;
 	color: white;
@@ -195,48 +195,33 @@ html:lang(ko) .btn-start {
 
 /* 레이어 팝업 */
 #modal {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+	display:flex;
+	align-items:center;
+	flex-direction:column;
+	justify-content:center;
+	position:absolute;
+	bottom:-100vh;
+	z-index:20;
+	width:100%;
+	height:100%;
+	opacity:0;
+	transition:all 0.5s;
 }
-#modal .modal-bg {
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+#modal.on {
+	bottom:0;
+	opacity:1;
+	transition:all 0.5s;
+	background:rgba(0, 0, 0, 0.7);
 }
-#modal .modal-bg .modal-cont {
-    display: inline-block;
-    position: relative;
+#modal.on.stop{
+	background:rgba(209, 50, 50, 0.7);
+}
+#modal .modal-cont {
+    display: block;
     padding: 3rem;
-    max-width: 800px;
+    width: 80%;
+	border-radius: 1.5rem;
     background: #fff;
-}
-#modal .modal-bg .modal-cont h2 {
-    margin: 0 0 15px;
-    margin: 0 0 1.5rem;
-    font-size: 30px;
-    font-size: 3rem;
-}
-#modal .modal-bg .modal-cont p {
-    font-size: 18px;
-}
-#modal .btn-close {
-    top: 0;
-    right: 0;
-	width:40px;
-	width:4rem;
-	height:40px;
-	height:4rem;
-}
-#modal .btn-close:before,
-#modal .btn-close:after {
-	position: absolute;
-	left:25%;
-	width:50%;
-	background-color:#000;
+	font-size: 1.5rem;
+	text-align: center;
 }

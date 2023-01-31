@@ -82,12 +82,12 @@
             <section class="timer-area">
                 <h2 class="hide-txt">타이머</h2>
                 <p id="time_left"></p>
-                <ul>
+                <div class="time-button-area">
                     <!-- CSS 수정 예정 -->
-                    <li id="playpause">▶</li>
-                    <li id="reset">↺</li>
+                    <button id="playpause">▶</button>
+                    <button id="reset">↺</button>
                     <!-- // CSS 수정 예정 -->
-                </ul>
+                </div>
                 <!-- 임시 닫기 버튼 -->
                 <button type="button" class="btn-close"><span class="hide-txt">닫기</span></button>
             </section>
@@ -95,11 +95,9 @@
         </main>
         <!-- 알림팝업 -->
         <div id="modal">
-            <div class="modal-bg">
-                <div class="modal-cont">
-                    <h2>알림창</h2>
+            <div class="modal-cont">
+                <div>
                     <p id="modal-message"></p>
-                    <button type="button" id="btn-close-modal" class="btn-close"><span class="hide-txt">닫기</span></button>
                 </div>
             </div>
         </div>
