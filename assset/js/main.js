@@ -1,5 +1,6 @@
 import Timer from "./timer.js";
 import roastingTime from "./roastingTime.js";
+import message from "./message.js";
 
 const timer = new Timer();
 timer.setTime();
@@ -24,7 +25,7 @@ btnStart.addEventListener("click", () => {
     } else {
         timerArea.classList.remove("on");
         // 알림팝업 열기
-        openLayerPopup("항목을 선택해 주세요");
+        openLayerPopup(message.ko.selectItem);
     }
 });
 // 임시 닫기 버튼
@@ -42,7 +43,7 @@ document.getElementById("playpause").addEventListener("click", () => {
     if (isPlaying) {
         // 재생정지 및 일시정지팝업표시
         timer.stop();
-        openLayerPopup("일시정지",true);
+        openLayerPopup(message.ko.stop,true);
     }else{
         // 재생
         timer.play();
