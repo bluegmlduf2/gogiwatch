@@ -9,10 +9,13 @@ timer.displayTime();
 /********************************************************************************
  * 이벤트 등록
  ********************************************************************************/
-let btnStart = document.querySelector(".btn-start");
-let btnClose = document.querySelector(".btn-close");
-let timerArea = document.querySelector(".timer-area");
-let alertModal = document.querySelector("#modal");
+const btnStart = document.querySelector(".btn-start");
+const btnClose = document.querySelector(".btn-close");
+const timerArea = document.querySelector(".timer-area");
+const alertModal = document.querySelector("#modal");
+const modalMessage = alertModal.querySelector("#modal-message");
+const modalButtonList = alertModal.querySelector(".wrap-modal-button-list");
+let isConfirmStatus = ""; // 현재 열린 확인창의 종류
 
 // 시작 버튼 클릭 시 타이머 등장
 btnStart.addEventListener("click", () => {
@@ -30,30 +33,28 @@ btnStart.addEventListener("click", () => {
 });
 // 임시 닫기 버튼
 btnClose.addEventListener("click", () => {
-    timerArea.classList.remove("on");
-    timer.reset();
-    timer.displayTime();
+    openLayerPopup(message.ko.close, "confirm-close");
 });
 // 재생버튼 클릭이벤트
 document.getElementById("playpause").addEventListener("click", () => {
     // 재생상태
-    const isPlaying=timer.playing;
-    
+    const isPlaying = timer.playing;
+
     // 재생상태에 따른 타이머 재생정지
     if (isPlaying) {
         // 재생정지 및 일시정지팝업표시
         timer.stop();
-        openLayerPopup(message.ko.stop,true);
-    }else{
+        openLayerPopup(message.ko.stop, "stop");
+    } else {
         // 재생
         timer.play();
         timer.displayTime();
     }
 });
+
 // 리셋버튼
 document.getElementById("reset").addEventListener("click", () => {
-    timer.reset();
-    timer.displayTime();
+    openLayerPopup(message.ko.reset, "confirm-reset");
 });
 
 // 돼지고기 고기종류 선택
@@ -91,10 +92,26 @@ document.getElementsByName("type1").forEach((e) => {
     });
 });
 
-// 알림창닫기
+// 알림창 닫기
 document.getElementById("modal").addEventListener("click", () => {
-    // 알림팝업 닫기
-    closeLayerPopup();
+    const isStopLayer = alertModal.classList.contains("stop");
+    if (isStopLayer) {
+        // 정지알림창 닫기
+        closeLayerPopup("stop");
+    } else {
+        // 일반알림창 닫기
+        closeLayerPopup();
+    }
+});
+// 알람창 확인버튼
+document.getElementById("modal-ok").addEventListener("click", () => {
+    // 알림팝업 확인
+    closeLayerPopup("confirm-ok");
+});
+// 알람창 취소버튼
+document.getElementById("modal-cancel").addEventListener("click", () => {
+    // 알림팝업 취소
+    closeLayerPopup("confirm-close");
 });
 
 /********************************************************************************
@@ -176,35 +193,63 @@ let converTimeSecToMin = function (sumSec) {
     return mmss;
 };
 
-/**
- * 알림창을 열기
- * 메세지가 존재하면 창을 표시한다
- * @param {String} message 알림 메세지
- * @param {Boolean} isStopLayer 정지화면 유무
- */
-let openLayerPopup = function (message,isStopLayer = false) {
-    // 알림창을 열기
+// 알림창을 열기
+let openLayerPopup = function (message, status) {
+    // 알림창의 메세지 설정및 표시
+    modalMessage.innerText = message;
     alertModal.classList.add("on");
-    alertModal.querySelector("#modal-message").innerText = message;
+    isConfirmStatus = "";
+    isConfirmStatus = status;
 
-    // 정지화면인 경우 배경을 빨간색으로 한다
-    if (isStopLayer) {
-        alertModal.classList.add("stop");
+    // 타이머 일시정지
+    timer.stop();
+
+    // 알림종류에 따라서 알림창을 설정
+    switch (status) {
+        // 정지화면인 경우 배경을 빨간색으로 한다
+        case "stop":
+            alertModal.classList.add("stop");
+            break;
+        case "confirm-close":
+            // 타이머 화면 종료 확인창
+            modalButtonList.style.display = "block";
+            break;
+        case "confirm-reset":
+            // 재시작 확인창
+            modalButtonList.style.display = "block";
+            break;
     }
 };
-/**
- * 알림창을 닫기
- */
-let closeLayerPopup = function () {
-    // 알림창을 닫기
-    alertModal.classList.remove("on");
-    alertModal.querySelector("#modal-message").innerText = "";
 
-    const isStopLayer=alertModal.classList.contains("stop");
-    // 정지화면인 경우 타이머를 재생
-    if (isStopLayer) {
-        // 재생
-        timer.play();
-        alertModal.classList.remove("stop");
+// 알림창을 닫기
+let closeLayerPopup = function (status) {
+    // 알림창을 닫기
+    modalMessage.innerText = "";
+    alertModal.classList.remove("on");
+
+    // 알림종류에 닫기 후 처리를 다르게 한다
+    switch (status) {
+        case "stop":
+            // 정지화면
+            // 타이머 시작
+            timer.play();
+            alertModal.classList.remove("stop");
+            break;
+        case "confirm-ok":
+            // 확인창에서 확인버튼
+            if (isConfirmStatus === "confirm-close") {
+                // 닫기
+                modalButtonList.style.display = "none";
+                timerArea.classList.remove("on");
+            } else if (isConfirmStatus === "confirm-reset") {
+                // 리셋버튼
+                timer.reset();
+                timer.displayTime();
+            }
+            break;
+        case "confirm-cancel":
+            // 확인창에서 취소버튼
+            modalButtonList.style.display = "none";
+            break;
     }
 };

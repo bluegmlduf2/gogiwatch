@@ -233,10 +233,22 @@ html:lang(ko) .btn-start {
 }
 #modal .modal-cont {
     display: block;
-    padding: 3rem;
+    padding: 2.5rem;
     width: 80%;
 	border-radius: 1.5rem;
     background: #fff;
 	font-size: 1.5rem;
 	text-align: center;
+}
+#modal .wrap-modal-button-list{
+	display: none;
+	margin-top: 16px;
+	margin-top: 1.6rem;
+}
+#modal .wrap-modal-button-list button{
+	padding: 1rem;
+	margin: 0 1rem;
+}
+#modal .wrap-modal-button-list #modal-ok {
+	color:#698d01;
 }
