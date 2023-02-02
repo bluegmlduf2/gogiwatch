@@ -15,58 +15,56 @@
             <section class="main-area">
                 <h2 class="hide-txt">메인</h2>
                 <!-- Logo -->
-                <h1 class="logo"><span>고기와치</span></h1>
+                <h1 class="logo"><img src="../assset/img/img_logo_kr.png" alt="고기와치"></h1>
                 
-                <form action="">
-                    <h2>돼지고기</h2>
-                    <div class="wrap-meat-pork">
+                <h2>돼지고기</h2>
+                <div class="wrap-meat-pork">
+                    <label>
+                        <input type="radio" name="type1" value="porkBelly"/>
+                        <span>삼겹살</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="type1" value="porkShoulder"/>
+                        <span>목살</span>
+                    </label>
+                </div>
+                <h2>소고기</h2>
+                <div class="wrap-meat-beef">
+                    <label>
+                        <input type="radio" name="type1" value="beefSirloin"/>
+                        <span>등심</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="type1" value="beefTenderloin"/>
+                        <span>안심</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="type1" value="beefTopBlade"/>
+                        <span>부채살</span>
+                    </label>
+                </div>
+                <div class="wrap-beef-roasting-type">
+                    <h3>굽기 정도</h3>
+                    <div class="wrap-meat-roasting">
                         <label>
-                            <input type="radio" name="type1" value="porkBelly"/>
-                            <span>삼겹살</span>
+                            <input type="radio" name="type2" value="rare"/>
+                            <span>레어</span>
                         </label>
                         <label>
-                            <input type="radio" name="type1" value="porkShoulder"/>
-                            <span>목살</span>
+                            <input type="radio" name="type2" value="mediumRare"/>
+                            <span>미디엄레어</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="type2" value="medium" checked />
+                            <span>미디엄</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="type2" value="well"/>
+                            <span>웰던</span>
                         </label>
                     </div>
-                    <h2>소고기</h2>
-                    <div class="wrap-meat-beef">
-                        <label>
-                            <input type="radio" name="type1" value="beefSirloin"/>
-                            <span>등심</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="type1" value="beefTenderloin"/>
-                            <span>안심</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="type1" value="beefTopBlade"/>
-                            <span>부채살</span>
-                        </label>
-                    </div>
-                    <div class="wrap-beef-roasting-type">
-                        <h3>굽기 정도</h3>
-                        <div class="wrap-meat-roasting">
-                            <label>
-                                <input type="radio" name="type2" value="rare"/>
-                                <span>레어</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="type2" value="mediumRare"/>
-                                <span>미디엄레어</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="type2" value="medium" checked />
-                                <span>미디엄</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="type2" value="well"/>
-                                <span>웰던</span>
-                            </label>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-start">시작</button>
-                </form>
+                </div>
+                <button type="button" class="btn-start">시작</button>
                 <!-- language -->
                 <!-- <div class="wrap_language">
                     <select name="" id="">

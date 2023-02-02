@@ -11,13 +11,18 @@ section {
 /* 메인 영역 */
 .main-area {
 	position:relative;
-	padding: 42px 20px 68px;
-	padding: 4.2rem 2rem 6.8rem;
+	padding: 32px 20px 68px;
+	padding: 3.2rem 2rem 6.8rem;
 	width:100%;
 	height:100%;
 	box-sizing:border-box;
 	font-size:18px;
 	font-size:1.8rem
+}
+.main-area .logo img {
+	width:80%;
+	max-width:200px;
+	max-width:20rem;
 }
 .main-area h2{
 	margin-top:36px;
