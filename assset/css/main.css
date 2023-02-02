@@ -29,6 +29,15 @@ section {
 	margin-top:3.6rem;
 	font-size:24px;
 	font-size: 2.4rem;
+	text-align:left;
+}
+.main-area .ico-pan {
+	display:inline-block;
+	width: 24px;
+	width: 2.4rem;
+	height: 24px;
+	height: 2.4rem;
+	background:url(../img/ico_pan.png) no-repeat center center/100%;
 }
 .main-area [class^="wrap-meat"] {
 	display:flex;
