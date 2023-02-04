@@ -196,7 +196,7 @@ let converTimeSecToMin = function (sumSec) {
 // 알림창을 열기
 let openLayerPopup = function (message, status) {
     // 알림창의 메세지 설정및 표시
-    modalMessage.innerText = message;
+    modalMessage.innerHTML = message;
     alertModal.classList.add("on");
     isConfirmStatus = "";
     isConfirmStatus = status;
@@ -212,11 +212,13 @@ let openLayerPopup = function (message, status) {
             break;
         case "confirm-close":
             // 타이머 화면 종료 확인창
-            modalButtonList.style.display = "block";
+            //modalButtonList.style.display = "block";
+            alertModal.classList.add("confirm");
             break;
         case "confirm-reset":
             // 재시작 확인창
-            modalButtonList.style.display = "block";
+            // modalButtonList.style.display = "block";
+            alertModal.classList.add("confirm");
             break;
     }
 };
@@ -224,8 +226,8 @@ let openLayerPopup = function (message, status) {
 // 알림창을 닫기
 let closeLayerPopup = function (status) {
     // 알림창을 닫기
-    modalMessage.innerText = "";
-    alertModal.classList.remove("on");
+    modalMessage.innerHTML = "";
+    alertModal.classList.remove("on","confirm");
 
     // 알림종류에 닫기 후 처리를 다르게 한다
     switch (status) {
@@ -239,8 +241,7 @@ let closeLayerPopup = function (status) {
             // 확인창에서 확인버튼
             if (isConfirmStatus === "confirm-close") {
                 // 닫기
-                modalButtonList.style.display = "none";
-                timerArea.classList.remove("on");
+                timerArea.classList.remove("on","confirm");
             } else if (isConfirmStatus === "confirm-reset") {
                 // 리셋버튼
                 timer.reset();
@@ -249,7 +250,8 @@ let closeLayerPopup = function (status) {
             break;
         case "confirm-cancel":
             // 확인창에서 취소버튼
-            modalButtonList.style.display = "none";
+            // modalButtonList.style.display = "none";
+            timerArea.classList.remove("confirm");
             break;
     }
 };

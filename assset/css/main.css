@@ -1,5 +1,5 @@
 main.wrap{
-	overflow:hidden;
+	/* overflow:hidden; */
 	position:relative;
 	width:100%;
 	height:100vh;
@@ -14,7 +14,7 @@ section {
 	padding: 32px 20px 68px;
 	padding: 3.2rem 2rem 6.8rem;
 	width:100%;
-	height:100%;
+	height:100vh;
 	box-sizing:border-box;
 	font-size:18px;
 	font-size:1.8rem
@@ -113,39 +113,47 @@ html:lang(ko) .btn-start {
 }
 /* 타이머 */
 .timer-area {
+	position:relative;
+	overflow:hidden;
+}
+.timer-area.on {
+	overflow:visible;
+}
+.timer-area .timer-wrap{
 	display:flex;
 	align-items:center;
 	flex-direction:column;
 	justify-content:center;
 	position:absolute;
-	bottom:-100vh;
+	bottom:0;
 	z-index:10;
 	width:100%;
-	height:100%;
+	height:100vh;
 	opacity:0;
+	transform:translateY(100vh);
 	transition:all 0.5s;
 }
-.timer-area.on {
-	bottom:0;
+.timer-area.on .timer-wrap {
 	opacity:1;
 	transition:all 0.5s;
+	transform:translateY(0);
 	background:#e6ecf3;
 }
-.timer-area > p {
+.timer-area .timer-wrap > p {
 	margin: 20px;
 	margin: 2rem;
 	font-size: 36px;
 	font-size: 3.6rem;
 	font-family: courier;
 }
-  
-.timer-area > .time-button-area {
+
+.timer-area  .timer-wrap > .time-button-area {
 	margin: 20px;
 	font-size: 3em;
 	font-family: courier;
 }
   
-.timer-area > .time-button-area > button {
+.timer-area .time-button-area > button {
 	display: inline-block;
 	margin: 0 5px 0;
 	color: white;
@@ -228,27 +236,57 @@ html:lang(ko) .btn-start {
 	transition:all 0.5s;
 	background:rgba(0, 0, 0, 0.7);
 }
-#modal.on.stop{
+#modal.stop{
 	background:rgba(200, 50, 50, 0.5);
+}
+#modal.stop .modal-cont {
+	opacity:0;
+	animation:1.5s ease .3s infinite blink;
 }
 #modal .modal-cont {
     display: block;
     padding: 2.5rem;
     width: 80%;
-	border-radius: 1.5rem;
+	border-radius: 1.6rem;
     background: #fff;
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	text-align: center;
+	line-height:24px;
+	line-height:2.4rem;
+}
+#modal.confirm .modal-cont {
+	padding: 2.5rem 2.5rem 1.5rem;
 }
 #modal .wrap-modal-button-list{
 	display: none;
-	margin-top: 16px;
-	margin-top: 1.6rem;
+	margin-top: 20px;
+	margin-top: 2rem;
+}
+#modal.confirm .wrap-modal-button-list{
+	display: flex;
+	align-items:center;
+	justify-content: center;
 }
 #modal .wrap-modal-button-list button{
-	padding: 1rem;
-	margin: 0 1rem;
+	display:block;
+	flex:1;
+	border:1px solid #ddd;
+	padding: 8px 12px;
+	padding: 0.8rem 1.2rem;
+	border-radius: 8px;
+	border-radius: .8rem;
 }
-#modal .wrap-modal-button-list #modal-ok {
+#modal .wrap-modal-button-list button + button {
+	margin-left: 8px;
+	margin-left: .8rem;
+}
+#modal .wrap-modal-button-list #modal-cancel {
+	border-color:#698d01;
 	color:#698d01;
+}
+
+@keyframes blink {
+	0% {opacity:0}
+	50% {opacity:1}
+	100% {opacity:0}
 }
