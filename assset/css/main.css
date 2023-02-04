@@ -12,13 +12,13 @@ section {
 	padding: 32px 20px 68px;
 	padding: 3.2rem 2rem 6.8rem;
 	width:100%;
-	height:100vh;
+	height:auto;
 	box-sizing:border-box;
 	font-size:18px;
 	font-size:1.8rem
 }
 .main-area.on {
-	height:auto;
+	height:100vh;
 }
 .main-area .logo img {
 	width:80%;

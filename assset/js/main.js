@@ -25,8 +25,10 @@ btnStart.addEventListener("click", () => {
     ).length;
     // 시작 버튼 유효성 검사
     if (btnValidation > 0) {
+        mainArea.classList.add("on");
         timerArea.classList.add("on");
     } else {
+        mainArea.classList.remove("on");
         timerArea.classList.remove("on");
         // 알림팝업 열기
         openLayerPopup(message.ko.selectItem);
@@ -88,10 +90,16 @@ document
 document.getElementsByName("type1").forEach((e) => {
     e.addEventListener("change", (event) => {
         // 소고기를 선택했을시만 고기 익힘 정도를 표시/비표시
-        document.querySelector(".wrap-beef-roasting-type").style.display =
-            event.target.closest(".wrap-meat-beef") ? "block" : "none";
-        mainArea.classList.toggle("on");
-    });
+        // document.querySelector(".wrap-beef-roasting-type").style.display =
+        //     event.target.closest(".wrap-meat-beef") ? "block" : "none";
+        if(event.target.closest(".wrap-meat-beef")){
+            document.querySelector(".wrap-beef-roasting-type").style.display = "block"
+            mainArea.classList.remove("on");
+        }else{
+            document.querySelector(".wrap-beef-roasting-type").style.display = "none"
+            mainArea.classList.add("on");
+        }
+    });    
 });
 
 // 알림창 닫기
@@ -228,7 +236,10 @@ let closeLayerPopup = function (status) {
     // 알림창을 닫기
     modalMessage.innerHTML = "";
     alertModal.classList.remove("on","confirm");
-
+    document.querySelector(".wrap-beef-roasting-type").style.display="none";
+    document.querySelectorAll('input[name="type1"]').forEach((e)=>{
+        e.checked=false;
+    });
     // 알림종류에 닫기 후 처리를 다르게 한다
     switch (status) {
         case "stop":
