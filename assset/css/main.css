@@ -166,6 +166,8 @@ html:lang(ko) .btn-start {
 	text-align: center;
 	cursor: pointer;
 } 
+.time-button-area .ico-button {}
+.time-button-area .ico-button.play {}
 
 /* 소고기 굽기정도 비표시 */
 .wrap-beef-roasting-type{
@@ -226,7 +228,7 @@ html:lang(ko) .btn-start {
 	top:0;
 	z-index:-1;
 	width:100%;
-	height:100%;
+	height:100vh;
 	opacity:0;
 	transition:all 0.5s;
 }
