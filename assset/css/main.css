@@ -1,8 +1,6 @@
 main.wrap{
-	/* overflow:hidden; */
 	position:relative;
 	width:100%;
-	height:100vh;
 	background:#e6ecf3;
 }
 section {
@@ -18,6 +16,9 @@ section {
 	box-sizing:border-box;
 	font-size:18px;
 	font-size:1.8rem
+}
+.main-area.on {
+	height:auto;
 }
 .main-area .logo img {
 	width:80%;

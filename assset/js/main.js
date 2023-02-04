@@ -11,6 +11,7 @@ timer.displayTime();
  ********************************************************************************/
 const btnStart = document.querySelector(".btn-start");
 const btnClose = document.querySelector(".btn-close");
+const mainArea = document.querySelector(".main-area");
 const timerArea = document.querySelector(".timer-area");
 const alertModal = document.querySelector("#modal");
 const modalMessage = alertModal.querySelector("#modal-message");
@@ -89,6 +90,7 @@ document.getElementsByName("type1").forEach((e) => {
         // 소고기를 선택했을시만 고기 익힘 정도를 표시/비표시
         document.querySelector(".wrap-beef-roasting-type").style.display =
             event.target.closest(".wrap-meat-beef") ? "block" : "none";
+        mainArea.classList.toggle("on");
     });
 });
 
@@ -212,12 +214,10 @@ let openLayerPopup = function (message, status) {
             break;
         case "confirm-close":
             // 타이머 화면 종료 확인창
-            //modalButtonList.style.display = "block";
             alertModal.classList.add("confirm");
             break;
         case "confirm-reset":
             // 재시작 확인창
-            // modalButtonList.style.display = "block";
             alertModal.classList.add("confirm");
             break;
     }
@@ -250,7 +250,6 @@ let closeLayerPopup = function (status) {
             break;
         case "confirm-cancel":
             // 확인창에서 취소버튼
-            // modalButtonList.style.display = "none";
             timerArea.classList.remove("confirm");
             break;
     }
