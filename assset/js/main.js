@@ -10,7 +10,7 @@ timer.displayTime();
  * 이벤트 등록
  ********************************************************************************/
 const btnStart = document.querySelector(".btn-start");
-const btnClose = document.querySelector(".btn-close");
+const btnClose = document.querySelector(".ggwc_btn.close");
 const mainArea = document.querySelector(".main-area");
 const timerArea = document.querySelector(".timer-area");
 const alertModal = document.querySelector("#modal");
