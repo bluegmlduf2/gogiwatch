@@ -5,7 +5,8 @@ class Timer {
     resetTime = null; // 리셋시간 저장용
     count = 0; // 현재시간을 초로 환산한 값
     turnOutTimeArr = []; // 고기 뒤집기 시간
-
+    classList = "";
+    
     constructor() {
         self = this;
     }
@@ -13,14 +14,18 @@ class Timer {
     // 시작
     play() {
         self.playing=true;
-        self.playpause.innerHTML = "‖";
+        self.playpause.innerHTML = "&#9208; 일시정지";
+        self.playpause.classList.remove("play");
+        self.playpause.classList.add("stop");
         self.countdown();
     }
 
     // 정지
     stop() {
         self.playing=false;
-        self.playpause.innerHTML = "▶";
+        self.playpause.innerHTML = "&#127830; 굽기 시작";
+        self.playpause.classList.remove("stop");
+        self.playpause.classList.add("play");
     }
 
     // 리셋
@@ -28,7 +33,9 @@ class Timer {
         // 재생중일시 정지
         if (self.playing) {
             self.playing = false;
-            self.playpause.innerHTML = "▶";
+            self.playpause.innerHTML = "&#127830; 굽기 시작";
+            self.playpause.classList.remove("stop");
+            self.playpause.classList.add("play");
         }
         self.setTime(self.resetTime);
     }

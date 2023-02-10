@@ -46,7 +46,7 @@ document.getElementById("playpause").addEventListener("click", () => {
     // 재생상태에 따른 타이머 재생정지
     if (isPlaying) {
         // 재생정지 및 일시정지팝업표시
-        timer.stop();
+        //timer.stop();
         openLayerPopup(message.ko.stop, "stop");
     } else {
         // 재생
