@@ -6,7 +6,6 @@ class Timer {
     resetTime = null; // 리셋시간 저장용
     count = 0; // 현재시간을 초로 환산한 값
     turnOutTimeArr = []; // 고기 뒤집기 시간
-    classList = "";
     
     constructor() {
         self = this;
