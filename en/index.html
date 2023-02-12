@@ -10,16 +10,110 @@
         <meta name="robots" content="ALL"/><!-- 모든 크롤러의 수집대상이 되도록 설정 -->
         <meta name="google-site-verification" content="" /><!--구글서치콘솔 등록-->
         <meta name="naver-site-verification" content="" /><!--네이버서치어드바이저 등록-->
+        <title>GGWC</title>
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="../assset/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="../assset/css/main.css" />
+        <link rel="shortcut icon" href="../assset/img/favicon_en.ico" type="image/x-icon">
+        <link rel="icon" href="../assset/img/favicon_en.ico" type="image/x-icon">
     </head>
     <body>
-        <p id="time_left"></p>
-        <ul>
-          <li id="playpause">▶</li>
-          <li id="reset">↺</li>
-        </ul>
+        <main class="wrap">
+            <!-- 메인 영역 : s -->
+            <section class="main-area">
+                <h2 class="hide-txt">main</h2>
+                <!-- Logo -->
+                <h1 class="logo"><img src="../assset/img/img_logo_en.png" alt="ゴギワチ"></h1>
+                
+                <h2>Pork <i class="ico-pan"></i></h2>
+                <div class="wrap-meat-pork">
+                    <label>
+                        <input type="radio" name="type1" value="porkBelly"/>
+                        <span>PorkBelly</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="type1" value="porkShoulder"/>
+                        <span>PorkShoulder</span>
+                    </label>
+                </div>
+                <h2>Beef <i class="ico-pan"></i></h2>
+                <div class="wrap-meat-beef">
+                    <label>
+                        <input type="radio" name="type1" value="beefSirloin"/>
+                        <span>BeefSirloin</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="type1" value="beefTenderloin"/>
+                        <span>BeefTenderloin</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="type1" value="beefTopBlade"/>
+                        <span>BeefTopBlade</span>
+                    </label>
+                </div>
+                <div class="wrap-beef-roasting-type">
+                    <h3>Temperature <i class="ico-level"></i></h3>
+                    <div class="wrap-meat-roasting">
+                        <label>
+                            <input type="radio" name="type2" value="rare"/>
+                            <span>Rare</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="type2" value="mediumRare"/>
+                            <span>Medium-rare</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="type2" value="medium" checked />
+                            <span>Medium</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="type2" value="well"/>
+                            <span>Well-done</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="button" class="btn-start">Start</button>
+                <!-- language -->
+                <!-- <div class="wrap_language">
+                    <select name="" id="">
+                        <option value="">Language</option>
+                        <option value="">ENGLISH</option>
+                        <option value="">日本語</option>
+                        <option value="">한국어</option>
+                    </select>
+                </div> -->
+            </section>
+            <!-- 메인 영역 : e -->
+            <!-- 타이머 영역 : s -->
+            <section class="timer-area">
+                <div class="timer-wrap">
+                    <h2 class="hide-txt">Timer</h2>
+                    <p id="time_left"></p>
+                    <div class="time-button-area">
+                        <!-- CSS 수정 예정 -->
+                        <!-- <button type="button" id="playpause" class="">▶</button> -->
+                        <button id="playpause" class="ggwc_btn play">&#127830;  Start</button>
+                        <!-- <button type="button" id="reset" class="">↺</button> -->
+                        <button id="reset" class="ggwc_btn reset">&#128257; Reset</button>
+                        <button type="button" class="ggwc_btn close">&#10060; Cancel</button>
+                        <!-- // CSS 수정 예정 -->
+                    </div>
+                </div>
+            </section>
+            <!-- 타이머 영역 : e -->
+            <!-- 알림팝업 -->
+            <div id="modal">
+                <div class="modal-cont">
+                    <div>
+                        <p id="modal-message"></p>
+                        <div class="wrap-modal-button-list">
+                            <button id="modal-ok">OK</button>
+                            <button id="modal-cancel">CANCEL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
         <!-- JS -->
         <script type="module" src="../assset/js/main.js"></script>
     </body>
