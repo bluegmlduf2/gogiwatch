@@ -356,7 +356,7 @@ html:lang(ko) .btn-start {
 .wrap_language select {
     background-color: transparent;
     border: none;
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: grey;
 }
 .wrap_language select:focus {
