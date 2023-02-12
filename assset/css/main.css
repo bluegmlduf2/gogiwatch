@@ -87,9 +87,6 @@ main.wrap{
 	background-color:#2d4902;
 	color:var(--color-white);
 }
-/* .wrap_language select {
-	padding 
-} */
 .btn-start {
 	display:block;
 	position:fixed;
@@ -348,4 +345,21 @@ html:lang(ko) .btn-start {
 	0% {opacity:0}
 	50% {opacity:1}
 	100% {opacity:0}
+}
+
+/* 언어선택 */
+.wrap_language {
+	position: fixed;
+	top: 1rem; 
+	right: 0.5rem;
+}
+.wrap_language select {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: grey;
+}
+.wrap_language select:focus {
+    outline: 0;
+    border: none;
 }

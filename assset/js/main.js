@@ -14,6 +14,7 @@ timer.displayTime();
  ********************************************************************************/
 const btnStart = document.querySelector(".btn-start");
 const btnClose = document.querySelector(".ggwc_btn.close");
+const selectLanguage = document.querySelector("#language");
 const mainArea = document.querySelector(".main-area");
 const timerArea = document.querySelector(".timer-area");
 const alertModal = document.querySelector("#modal");
@@ -39,6 +40,26 @@ btnStart.addEventListener("click", () => {
 // 임시 닫기 버튼
 btnClose.addEventListener("click", () => {
     openLayerPopup(getMessageList().close, "confirm-close");
+});
+// 화면 최초 로드시 언어선택 셀렉트박스 초기화
+window.addEventListener('load',()=>{
+    const url = document.URL;
+    switch (true) {
+        case url.includes("ko"):
+            selectLanguage.value="ko";
+            break;
+        case url.includes("ja"):
+            selectLanguage.value="ja";
+            break;
+        case url.includes("en"):
+            selectLanguage.value="en";
+            break;
+    }
+})
+// 언어선택 셀렉트박스 선택시 홰당 언어페이지로 이동
+selectLanguage.addEventListener("change", (e) => {
+    const selectedItem = e.target.value;
+    location.href=location.href.replace(/ko|ja|en/g , selectedItem)
 });
 // 재생버튼 클릭이벤트
 document.getElementById("playpause").addEventListener("click", () => {
