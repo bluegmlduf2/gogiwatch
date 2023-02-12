@@ -1,3 +1,4 @@
+import getMessageList from "./message.js";
 class Timer {
     playpause = document.getElementById("playpause");
     display = document.getElementById("time_left");
@@ -14,7 +15,7 @@ class Timer {
     // 시작
     play() {
         self.playing=true;
-        self.playpause.innerHTML = "&#9208; 일시정지";
+        self.playpause.innerHTML = `&#9208; ${getMessageList().pauseText}`;
         self.playpause.classList.remove("play");
         self.playpause.classList.add("stop");
         self.countdown();
@@ -23,7 +24,7 @@ class Timer {
     // 정지
     stop() {
         self.playing=false;
-        self.playpause.innerHTML = "&#127830; 굽기 시작";
+        self.playpause.innerHTML = `&#9208; ${getMessageList().startText}`;
         self.playpause.classList.remove("stop");
         self.playpause.classList.add("play");
     }
@@ -33,7 +34,7 @@ class Timer {
         // 재생중일시 정지
         if (self.playing) {
             self.playing = false;
-            self.playpause.innerHTML = "&#127830; 굽기 시작";
+            self.playpause.innerHTML = `&#9208; ${getMessageList().startText}`;
             self.playpause.classList.remove("stop");
             self.playpause.classList.add("play");
         }

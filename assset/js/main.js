@@ -1,6 +1,6 @@
 import Timer from "./timer.js";
 import roastingTime from "./roastingTime.js";
-import message from "./message.js";
+import getMessageList from "./message.js";
 
 const timer = new Timer();
 timer.setTime();
@@ -31,12 +31,12 @@ btnStart.addEventListener("click", () => {
         mainArea.classList.remove("on");
         timerArea.classList.remove("on");
         // 알림팝업 열기
-        openLayerPopup(message.ko.selectItem);
+        openLayerPopup(getMessageList().selectItem);
     }
 });
 // 임시 닫기 버튼
 btnClose.addEventListener("click", () => {
-    openLayerPopup(message.ko.close, "confirm-close");
+    openLayerPopup(getMessageList().close, "confirm-close");
 });
 // 재생버튼 클릭이벤트
 document.getElementById("playpause").addEventListener("click", () => {
@@ -47,7 +47,7 @@ document.getElementById("playpause").addEventListener("click", () => {
     if (isPlaying) {
         // 재생정지 및 일시정지팝업표시
         //timer.stop();
-        openLayerPopup(message.ko.stop, "stop");
+        openLayerPopup(getMessageList().stop, "stop");
     } else {
         // 재생
         timer.play();
@@ -57,7 +57,7 @@ document.getElementById("playpause").addEventListener("click", () => {
 
 // 리셋버튼
 document.getElementById("reset").addEventListener("click", () => {
-    openLayerPopup(message.ko.reset, "confirm-reset");
+    openLayerPopup(getMessageList().reset, "confirm-reset");
 });
 
 // 돼지고기 고기종류 선택
