@@ -157,13 +157,44 @@ html:lang(ko) .btn-start {
 	background:#e6ecf3;
 }
 .timer-area .timer-wrap > p {
-	margin: 20px;
-	margin: 2rem;
+	text-align:center;
 	font-size: 36px;
 	font-size: 3.6rem;
-	font-family: courier;
 }
-
+.timer-area .wrap-visual {
+	position:relative;
+	width:100%;
+	height:100px;
+	height:10rem;
+}
+.timer-area .wrap-visual i {
+	position:absolute;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:100%;
+}
+.timer-area .wrap-visual .ico-pan-handle {
+	top:20px;
+	top:2rem;
+	left:calc(50% + 5.9rem);
+	width:54px;
+	width:5.4rem;
+	height:25px;
+	height:2.5rem;
+	background-image:url(../img/ico_pan_handle.png);
+	transform-origin: left;
+	transform:rotate(-12deg);
+}
+.timer-area .wrap-visual .ico-pan-body {
+	top:50%;
+	left:50%;
+	width:145px;
+	width:14.5rem;
+	height:52px;
+	height:5.2rem;
+	background-image:url(../img/ico_pan_body.png);
+	transform:translate(-50%, -50%) scale(1) rotate(6deg);
+}
 .timer-area  .timer-wrap > .time-button-area {
 	display:flex;
 	flex-wrap:wrap;
@@ -206,14 +237,13 @@ html:lang(ko) .btn-start {
 .timer-area .time-button-area .ggwc_btn.close{
 	width:calc(50% - 0.6rem);
 }
-.timer-area .ggwc_btn:before {
-	/* content:""; */
+/* .timer-area .ggwc_btn:before {
 	display:inline-block;
 	width:20px;	
 	width:2rem;
 	height:20px;	
 	height:2rem;	
-}
+} */
 /* .timer-area .time-button-area > button {
 	display: inline-block;
 	margin: 0 5px 0;
@@ -226,8 +256,8 @@ html:lang(ko) .btn-start {
 	text-align: center;
 	cursor: pointer;
 }  */
-.time-button-area .ico-button {}
-.time-button-area .ico-button.play {}
+/* .time-button-area .ico-button {}
+.time-button-area .ico-button.play {} */
 
 /* 소고기 굽기정도 비표시 */
 .wrap-beef-roasting-type{
