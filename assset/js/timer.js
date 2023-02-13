@@ -2,6 +2,7 @@ import getMessageList from "./message.js";
 class Timer {
     playpause = document.getElementById("playpause");
     display = document.getElementById("time_left");
+    timerVisual = document.getElementById("timerVisual");
     playing = false; // 재생상태 유무
     resetTime = null; // 리셋시간 저장용
     count = 0; // 현재시간을 초로 환산한 값
@@ -10,13 +11,13 @@ class Timer {
     constructor() {
         self = this;
     }
-
     // 시작
     play() {
         self.playing=true;
         self.playpause.innerHTML = `&#9208; ${getMessageList().pauseText}`;
         self.playpause.classList.remove("play");
         self.playpause.classList.add("stop");
+        timerVisual.classList.add("on");
         self.countdown();
     }
 
@@ -26,6 +27,7 @@ class Timer {
         self.playpause.innerHTML = `&#9208; ${getMessageList().startText}`;
         self.playpause.classList.remove("stop");
         self.playpause.classList.add("play");
+        timerVisual.classList.remove("on");
     }
 
     // 리셋
@@ -36,6 +38,7 @@ class Timer {
             self.playpause.innerHTML = `&#9208; ${getMessageList().startText}`;
             self.playpause.classList.remove("stop");
             self.playpause.classList.add("play");
+            timerVisual.classList.remove("on");
         }
         self.setTime(self.resetTime);
     }
