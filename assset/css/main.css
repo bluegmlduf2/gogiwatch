@@ -9,8 +9,8 @@ main.wrap{
 /* 메인 영역 */
 .main-area {
 	position:relative;
-	padding: 32px 20px 68px;
-	padding: 3.2rem 2rem 6.8rem;
+	padding: 12px 20px 68px;
+	padding: 1.2rem 2rem 6.8rem;
 	width:100%;
 	height:auto;
 	box-sizing:border-box;
@@ -21,6 +21,8 @@ main.wrap{
 	height:100vh;
 }
 .main-area .logo {
+	height:46px;
+	height:4.6rem;
 	text-align:center;
 }
 .main-area .logo img {
@@ -68,7 +70,7 @@ main.wrap{
 	padding:0;
 	border:0;
 }
-[class^="wrap-meat"] span {
+[class^="wrap-meat"] label > span {
 	display:flex;
 	align-items:center;
 	justify-content:center;
@@ -81,6 +83,25 @@ main.wrap{
 	height: 5rem;
 	color:#333;
 	font-weight: 600;
+}
+
+html:lang(en) [class^="wrap-meat"] label > span,
+html:lang(ja) [class^="wrap-meat"] label > span {
+	flex-direction:column;
+	padding: 12px 0; 
+	padding: 1.2rem 0;
+	height:auto;
+	gap:4px;
+	gap:.4rem;
+}
+html:lang(en) [class^="wrap-meat"] span b,
+html:lang(ja) [class^="wrap-meat"] span b {
+	font-size:16px;
+	font-size:1.6rem;
+}
+html:lang(en) [class^="wrap-meat"] span i,
+html:lang(ja) [class^="wrap-meat"] span i {
+	font-size:1.2rem;
 }
 [class^="wrap-meat"] input[type=radio]:checked + span {
 	border-color:#2d4902;
@@ -349,15 +370,19 @@ html:lang(ko) .btn-start {
 
 /* 언어선택 */
 .wrap_language {
-	position: fixed;
-	top: 1rem; 
-	right: 0.5rem;
+	text-align:right;
+	margin:0 -10px 10px;
+	margin:0 -1rem 1rem;
 }
 .wrap_language select {
     background-color: transparent;
     border: none;
-    font-size: 1.25rem;
-    color: grey;
+    font-size: 14px;
+    font-size: 1.4rem;
+    color: #666;
+}
+html:lang(ko) .wrap_language select {
+	font-weight:600;
 }
 .wrap_language select:focus {
     outline: 0;
