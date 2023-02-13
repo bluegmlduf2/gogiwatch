@@ -236,6 +236,21 @@ html:lang(ko) .btn-start {
 .timer-area .wrap-visual.on .ico-pan-body {
 	animation:2s ease infinite animation-pan-body;
 }
+.timer-area .wrap-visual.complete {
+	height:306px;
+	height:30.6rem;
+	margin-bottom:20px;
+	margin-bottom:2rem;
+	background:url(../img/img_complete.jpg) no-repeat center center;
+	background-size:306px;
+	background-size:30.6rem;
+}
+.timer-area .wrap-visual.complete .wrap-vapour,
+.timer-area .wrap-visual.complete .ico-pan-handle,
+.timer-area .wrap-visual.complete .ico-pan-body,
+.timer-area .wrap-visual.complete + p {
+	display:none;	
+}
 .timer-area  .timer-wrap > .time-button-area {
 	display:flex;
 	flex-wrap:wrap;
