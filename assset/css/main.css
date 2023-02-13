@@ -175,7 +175,8 @@ html:lang(ko) .btn-start {
 	z-index:1;
 	padding:0 10px;
 	padding:0 1rem;
-	width:40%;
+	width:145px;
+	width:14.5rem;
 	margin:0 auto;
 }
 .timer-area .wrap-visual .wrap-vapour span {
@@ -183,8 +184,8 @@ html:lang(ko) .btn-start {
 	bottom:25px;
 	bottom:2.5rem;
 	display:block;
-	margin:0 2px 25px;
-	margin:0 .2rem 2.5rem;
+	margin:0 1px 25px;
+	margin:0 .1rem 2.5rem;
 	min-width:6px;
 	min-width:.4rem;
 	height:60px;
@@ -316,9 +317,9 @@ html:lang(ko) .btn-start {
 }
 .timer-area .time-button-area .ggwc_btn.stop {
 	border-color:#e4892e;
-	background-color: transparent;
+	background-color: #e4892e;
 	font-weight:600;
-	color:#e4892e;
+	color:#fff;
 }
 .timer-area .time-button-area .ggwc_btn.reset,
 .timer-area .time-button-area .ggwc_btn.close{
