@@ -4,7 +4,7 @@
 main.wrap{
 	position:relative;
 	width:100%;
-	background:#e6ecf3;
+	background:#C8C8D3;
 }
 /* 메인 영역 */
 .main-area {
@@ -76,13 +76,15 @@ main.wrap{
 	justify-content:center;
 	padding: 12px 20px; 
 	padding: 1.2rem 2rem;
-	border:1px solid #666;
+	border:1px solid #e6ecf3;
 	border-radius: 8px;
 	border-radius: 0.8rem;
 	height: 50px;
 	height: 5rem;
 	color:#333;
 	font-weight: 600;
+	background-color:#e6ecf3;
+	transition:all .3s;
 }
 
 html:lang(en) [class^="wrap-meat"] label > span,
@@ -154,7 +156,7 @@ html:lang(ko) .btn-start {
 	opacity:1;
 	transition:all 0.5s;
 	transform:translateY(0);
-	background:#bebebf;
+	background:#C8C8D3;
 }
 .timer-area .timer-wrap > p {
 	margin:20px 0;
@@ -360,7 +362,7 @@ html:lang(ko) .btn-start {
 	height: 2rem;
 	background:url(../img/ico_level.png) no-repeat center center/100%;
 }
-.wrap-meat-roasting span {
+.wrap-meat-roasting label > span {
 	border-radius:30px;
 	border-radius:3rem;
 }
@@ -368,7 +370,7 @@ html:lang(ko) .btn-start {
 	color:#698d01;
 	border-width:0.2rem;
 	border-color:#698d01;
-	background:transparent;
+	background:#e6ecf3;
 }
 /* 임시 닫기 버튼 */
 .btn-close {
