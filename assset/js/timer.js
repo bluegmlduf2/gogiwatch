@@ -45,8 +45,11 @@ class Timer {
     // 타이머 동작
     countdown() {
         if (self.count == 0) {
+            // 타이머 완료시
             self.playing = false;
+            self.timerVisual.classList.add("complete"); // 완료이미지 표시
         } else if (self.playing) {
+            // 타이머 동작시
             setTimeout(self.countdown, 100);
             self.alertTurnOutTime();
             self.progressGauge();
@@ -57,9 +60,12 @@ class Timer {
 
     // 타이머 시간 설정 (미입력시 00:00)
     setTime(time = "0000") {
+        // 시간 초기화
         self.resetTime = time;
-        self.count = self.getTimeToSeconds(time); // MMSS를 SEC로 변환;
+        self.count = self.getTimeToSeconds(time);
         self.countSum = self.count;
+        // 완료 이미지 제거
+        self.timerVisual.classList.remove("complete");
     }
 
     // 조리게이지 초기화
