@@ -438,7 +438,7 @@ html:lang(ko) .btn-start {
     padding: 2.5rem;
     width: 80%;
 	border-radius: 1.6rem;
-    background: var(--color-white);
+    background-color:#e6ecf3;
 	font-size: 1.6rem;
 	text-align: center;
 	line-height:24px;
@@ -460,11 +460,13 @@ html:lang(ko) .btn-start {
 #modal .wrap-modal-button-list button{
 	display:block;
 	flex:1;
-	border:1px solid #ddd;
+	border:1px solid #666;
 	padding: 8px 12px;
 	padding: 0.8rem 1.2rem;
 	border-radius: 8px;
 	border-radius: .8rem;
+	color:#666;
+	background-color:#fff;
 }
 #modal .wrap-modal-button-list button + button {
 	margin-left: 8px;
