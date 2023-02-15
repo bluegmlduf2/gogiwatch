@@ -281,6 +281,7 @@ html:lang(ko) .btn-start {
 	border-radius:5rem;
 	background-color:#aad775;
 	transform: translateY(-50%);
+	transition: right .1s;
 }
 .timer-area .bar_gauge:after{
 	content:"";

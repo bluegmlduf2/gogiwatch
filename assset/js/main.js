@@ -6,8 +6,6 @@ import getMessageList from "./message.js";
  * 타이머 초기 설정
  ********************************************************************************/
 const timer = new Timer();
-timer.setTime();
-timer.displayTime();
 
 /********************************************************************************
  * 이벤트 등록
@@ -90,6 +88,7 @@ document.querySelectorAll(".wrap-meat-pork input").forEach((e) => {
         // 고기 굽기 시간 설정
         timer.setTime(porkRoastingTime.rosatingPorkTimeSum);
         timer.setTimeTurnOut(porkRoastingTime.roastingPorkTurnOutTimeArr);
+        timer.setGuage();
         timer.displayTime();
     });
 });
@@ -105,6 +104,7 @@ document
             // 고기 굽기 시간 설정
             timer.setTime(beefRoastingTime.rosatingBeefTimeSum);
             timer.setTimeTurnOut(beefRoastingTime.roastingBeefTurnOutTimeArr);
+            timer.setGuage();
             timer.displayTime();
         });
     });
