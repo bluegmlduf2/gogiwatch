@@ -38,29 +38,29 @@ btnStart.addEventListener("click", () => {
         openLayerPopup(getMessageList().selectItem);
     }
 });
-// 임시 닫기 버튼
+// 닫기 버튼
 btnClose.addEventListener("click", () => {
     openLayerPopup(getMessageList().close, "confirm-close");
 });
 // 화면 최초 로드시 언어선택 셀렉트박스 초기화
-window.addEventListener('load',()=>{
+window.addEventListener("load", () => {
     const url = document.URL;
     switch (true) {
         case url.includes("ko"):
-            selectLanguage.value="ko";
+            selectLanguage.value = "ko";
             break;
         case url.includes("ja"):
-            selectLanguage.value="ja";
+            selectLanguage.value = "ja";
             break;
         case url.includes("en"):
-            selectLanguage.value="en";
+            selectLanguage.value = "en";
             break;
     }
-})
+});
 // 언어선택 셀렉트박스 선택시 홰당 언어페이지로 이동
 selectLanguage.addEventListener("change", (e) => {
     const selectedItem = e.target.value;
-    location.href=location.href.replace(/ko|ja|en/g , selectedItem)
+    location.href = location.href.replace(/ko|ja|en/g, selectedItem);
 });
 // 재생버튼 클릭이벤트
 document.getElementById("playpause").addEventListener("click", () => {
@@ -70,7 +70,6 @@ document.getElementById("playpause").addEventListener("click", () => {
     // 재생상태에 따른 타이머 재생정지
     if (isPlaying) {
         // 재생정지 및 일시정지팝업표시
-        //timer.stop();
         openLayerPopup(getMessageList().stop, "stop");
     } else {
         // 재생
