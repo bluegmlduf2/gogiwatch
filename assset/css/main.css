@@ -164,6 +164,7 @@ html:lang(ko) .btn-start {
 	text-align:center;
 	font-size: 72px;
 	font-size: 7.2rem;
+	font-family:"Nanum Gothic";
 }
 .timer-area .wrap-visual {
 	position:relative;
