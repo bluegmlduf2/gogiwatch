@@ -108,10 +108,10 @@ class Timer {
             (e) => e === self.getCurrentTime(false)
         );
         // 고기뒤집을 시간이라면 표시
-        // TODO console.warn 삭제예정
         if (isOkTurnOutTime) {
-            console.warn("뒤집어요");
-            console.warn(self.getCurrentTime(true));
+            // TODO console.warn 삭제예정
+            //console.warn("뒤집어요");
+            //console.warn(self.getCurrentTime(true));
         }
     }
 
