@@ -26,7 +26,7 @@ class Timer {
     // 정지
     stop() {
         self.playing = false;
-        self.playpause.innerHTML = `&#9208; ${getMessageList().startText}`;
+        self.playpause.innerHTML = `&#127830; ${getMessageList().startText}`;
         self.playpause.classList.remove("stop");
         self.playpause.classList.add("play");
         self.timerVisual.classList.remove("on");
