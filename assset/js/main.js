@@ -3,9 +3,10 @@ import roastingTime from "./roastingTime.js";
 import getMessageList from "./message.js";
 
 /********************************************************************************
- * 타이머 초기 설정
+ * 클래스 초기화
  ********************************************************************************/
 const timer = new Timer();
+const noSleep = new NoSleep();
 
 /********************************************************************************
  * 이벤트 등록
@@ -18,6 +19,7 @@ const timerArea = document.querySelector(".timer-area");
 const alertModal = document.querySelector("#modal");
 const modalMessage = alertModal.querySelector("#modal-message");
 let isConfirmStatus = ""; // 현재 열린 확인창의 종류
+let isWakeLockEnabled = false; // 현재 브라우저의 슬립모드
 
 // 시작 버튼 클릭 시 타이머 등장
 btnStart.addEventListener("click", () => {
@@ -28,6 +30,7 @@ btnStart.addEventListener("click", () => {
     if (btnValidation > 0) {
         mainArea.classList.add("on");
         timerArea.classList.add("on");
+        enableNoSleep();
     } else {
         mainArea.classList.remove("on");
         timerArea.classList.remove("on");
@@ -278,6 +281,7 @@ let closeLayerPopup = function (status) {
             if (isConfirmStatus === "confirm-close") {
                 // 닫기
                 timerArea.classList.remove("on", "confirm");
+                disabledNoSleep();
             } else if (isConfirmStatus === "confirm-reset") {
                 // 리셋버튼
                 timer.reset();
@@ -289,4 +293,16 @@ let closeLayerPopup = function (status) {
             timerArea.classList.remove("confirm");
             break;
     }
+};
+// 노슬립모드 시작
+let enableNoSleep = function () {
+    if (!isWakeLockEnabled) {
+        noSleep.enable();
+        isWakeLockEnabled = true;
+    }
+};
+// 노슬립모드 종료
+let disabledNoSleep = function () {
+    noSleep.disable();
+    isWakeLockEnabled = false;
 };
